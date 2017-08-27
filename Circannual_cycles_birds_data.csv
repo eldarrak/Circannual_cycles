@@ -1,0 +1,393 @@
+,species,BirdID_char,Trait,cycle_length,Photoperiod,deviation,cyclenr_char,Reference
+1,Calidris canutus,k183,spring body mass,364,12:12 LD,-1,1,Karagicheva et al 2016
+2,Calidris canutus,k183,moult autumn,364,12:12 LD,-1,1,Karagicheva et al 2016
+3,Calidris canutus,k183,moult wing,399,12:12 LD,34,1,Karagicheva et al 2016
+4,Calidris canutus,k183,moult spring,294,12:12 LD,-71,1,Karagicheva et al 2016
+5,Calidris canutus,k189,spring body mass,392,12:12 LD,27,1,Karagicheva et al 2016
+6,Calidris canutus,k218,spring body mass,371,12:12 LD,6,1,Karagicheva et al 2016
+7,Calidris canutus,k220,spring body mass,364,12:12 LD,-1,1,Karagicheva et al 2016
+8,Calidris canutus,k236,spring body mass,393,12:12 LD,28,1,Karagicheva et al 2016
+9,Calidris canutus,k277,spring body mass,385,12:12 LD,20,1,Karagicheva et al 2016
+10,Calidris canutus,k281,spring body mass,406,12:12 LD,41,1,Karagicheva et al 2016
+11,Calidris canutus,k161,spring body mass,357,12:12 LD,-8,1,Karagicheva et al 2016
+12,Calidris canutus,k178,spring body mass,364,12:12 LD,-1,1,Karagicheva et al 2016
+13,Calidris canutus,k192,spring body mass,350,12:12 LD,-15,1,Karagicheva et al 2016
+14,Calidris canutus,k213,spring body mass,365,12:12 LD,0,1,Karagicheva et al 2016
+15,Calidris canutus,k226,spring body mass,357,12:12 LD,-8,1,Karagicheva et al 2016
+16,Calidris canutus,k295,spring body mass,351,12:12 LD,-14,1,Karagicheva et al 2016
+17,Calidris canutus,k385,spring body mass,427,12:12 LD,62,1,Karagicheva et al 2016
+18,Calidris canutus,k218,moult autumn,406,12:12 LD,41,1,Karagicheva et al 2016
+19,Calidris canutus,k220,moult autumn,385,12:12 LD,20,1,Karagicheva et al 2016
+20,Calidris canutus,k236,moult autumn,392,12:12 LD,27,1,Karagicheva et al 2016
+21,Calidris canutus,k277,moult autumn,378,12:12 LD,13,1,Karagicheva et al 2016
+22,Calidris canutus,k161,moult autumn,378,12:12 LD,13,1,Karagicheva et al 2016
+23,Calidris canutus,k178,moult autumn,364,12:12 LD,-1,1,Karagicheva et al 2016
+24,Calidris canutus,k226,moult autumn,378,12:12 LD,13,1,Karagicheva et al 2016
+25,Calidris canutus,k295,moult autumn,364,12:12 LD,-1,1,Karagicheva et al 2016
+26,Calidris canutus,k385,moult autumn,350,12:12 LD,-15,1,Karagicheva et al 2016
+27,Calidris canutus,k189,moult spring,350,12:12 LD,-15,1,Karagicheva et al 2016
+28,Calidris canutus,k218,moult spring,385,12:12 LD,20,1,Karagicheva et al 2016
+29,Calidris canutus,k220,moult spring,343,12:12 LD,-22,1,Karagicheva et al 2016
+30,Calidris canutus,k236,moult spring,364,12:12 LD,-1,1,Karagicheva et al 2016
+31,Calidris canutus,k277,moult spring,308,12:12 LD,-57,1,Karagicheva et al 2016
+32,Calidris canutus,k161,moult spring,350,12:12 LD,-15,1,Karagicheva et al 2016
+33,Calidris canutus,k178,moult spring,343,12:12 LD,-22,1,Karagicheva et al 2016
+34,Calidris canutus,k226,moult spring,322,12:12 LD,-43,1,Karagicheva et al 2016
+35,Calidris canutus,k295,moult spring,343,12:12 LD,-22,1,Karagicheva et al 2016
+36,Calidris canutus,k385,moult spring,371,12:12 LD,6,1,Karagicheva et al 2016
+37,Calidris canutus,k218,moult wing,399,12:12 LD,34,1,Karagicheva et al 2016
+38,Calidris canutus,k220,moult wing,399,12:12 LD,34,1,Karagicheva et al 2016
+39,Calidris canutus,k236,moult wing,392,12:12 LD,27,1,Karagicheva et al 2016
+40,Calidris canutus,k277,moult wing,539,12:12 LD,174,1,Karagicheva et al 2016
+41,Calidris canutus,k281,moult wing,420,12:12 LD,55,1,Karagicheva et al 2016
+42,Calidris canutus,k161,moult wing,406,12:12 LD,41,1,Karagicheva et al 2016
+43,Calidris canutus,k178,moult wing,399,12:12 LD,34,1,Karagicheva et al 2016
+44,Calidris canutus,k213,moult wing,448,12:12 LD,83,1,Karagicheva et al 2016
+45,Calidris canutus,k226,moult wing,392,12:12 LD,27,1,Karagicheva et al 2016
+46,Calidris canutus,k295,moult wing,378,12:12 LD,13,1,Karagicheva et al 2016
+47,Calidris canutus,k385,moult wing,406,12:12 LD,41,1,Karagicheva et al 2016
+48,Calidris canutus,k183,moult spring,336,12:12 LD,-29,0,Karagicheva et al 2016
+49,Calidris canutus,k189,moult spring,350,12:12 LD,-15,0,Karagicheva et al 2016
+50,Calidris canutus,k218,moult spring,336,12:12 LD,-29,0,Karagicheva et al 2016
+51,Calidris canutus,k220,moult spring,308,12:12 LD,-57,0,Karagicheva et al 2016
+52,Calidris canutus,k236,moult spring,315,12:12 LD,-50,0,Karagicheva et al 2016
+53,Calidris canutus,k277,moult spring,343,12:12 LD,-22,0,Karagicheva et al 2016
+54,Calidris canutus,k281,moult spring,252,12:12 LD,-113,0,Karagicheva et al 2016
+55,Calidris canutus,k161,moult spring,357,12:12 LD,-8,0,Karagicheva et al 2016
+56,Calidris canutus,k178,moult spring,357,12:12 LD,-8,0,Karagicheva et al 2016
+57,Calidris canutus,k192,moult spring,371,12:12 LD,6,0,Karagicheva et al 2016
+58,Calidris canutus,k213,moult spring,349,12:12 LD,-16,0,Karagicheva et al 2016
+59,Calidris canutus,k226,moult spring,329,12:12 LD,-36,0,Karagicheva et al 2016
+60,Calidris canutus,k295,moult spring,329,12:12 LD,-36,0,Karagicheva et al 2016
+61,Calidris canutus,k385,moult spring,336,12:12 LD,-29,0,Karagicheva et al 2016
+62,Calidris canutus,k183,moult autumn,343,12:12 LD,-22,0,Karagicheva et al 2016
+63,Calidris canutus,k189,moult autumn,406,12:12 LD,41,0,Karagicheva et al 2016
+64,Calidris canutus,k218,moult autumn,371,12:12 LD,6,0,Karagicheva et al 2016
+65,Calidris canutus,k220,moult autumn,413,12:12 LD,48,0,Karagicheva et al 2016
+66,Calidris canutus,k236,moult autumn,413,12:12 LD,48,0,Karagicheva et al 2016
+67,Calidris canutus,k277,moult autumn,385,12:12 LD,20,0,Karagicheva et al 2016
+68,Calidris canutus,k281,moult autumn,322,12:12 LD,-43,0,Karagicheva et al 2016
+69,Calidris canutus,k161,moult autumn,322,12:12 LD,-43,0,Karagicheva et al 2016
+70,Calidris canutus,k178,moult autumn,392,12:12 LD,27,0,Karagicheva et al 2016
+71,Calidris canutus,k213,moult autumn,371,12:12 LD,6,0,Karagicheva et al 2016
+72,Calidris canutus,k226,moult autumn,398,12:12 LD,33,0,Karagicheva et al 2016
+73,Calidris canutus,k295,moult autumn,364,12:12 LD,-1,0,Karagicheva et al 2016
+74,Calidris canutus,k385,moult autumn,308,12:12 LD,-57,0,Karagicheva et al 2016
+75,Calidris canutus,k183,moult wing,364,12:12 LD,-1,0,Karagicheva et al 2016
+76,Calidris canutus,k189,moult wing,425,12:12 LD,60,0,Karagicheva et al 2016
+77,Calidris canutus,k226,moult wing,398,12:12 LD,33,0,Karagicheva et al 2016
+78,Calidris canutus,k213,moult wing,420,12:12 LD,55,0,Karagicheva et al 2016
+79,Calidris canutus,k295,moult wing,390,12:12 LD,25,0,Karagicheva et al 2016
+80,Calidris canutus,k385,moult wing,385,12:12 LD,20,0,Karagicheva et al 2016
+81,Calidris canutus,k218,moult wing,407,12:12 LD,42,0,Karagicheva et al 2016
+82,Calidris canutus,k220,moult wing,419,12:12 LD,54,0,Karagicheva et al 2016
+83,Calidris canutus,k236,moult wing,411,12:12 LD,46,0,Karagicheva et al 2016
+84,Calidris canutus,k277,moult wing,404,12:12 LD,39,0,Karagicheva et al 2016
+85,Calidris canutus,k281,moult wing,385,12:12 LD,20,0,Karagicheva et al 2016
+86,Calidris canutus,k161,moult wing,384,12:12 LD,19,0,Karagicheva et al 2016
+87,Calidris canutus,k178,moult wing,412,12:12 LD,47,0,Karagicheva et al 2016
+88,Calidris canutus,k192,moult wing,441,12:12 LD,76,0,Karagicheva et al 2016
+89,Calidris canutus,k183,spring body mass,371,12:12 LD,6,0,Karagicheva et al 2016
+90,Calidris canutus,k189,spring body mass,371,12:12 LD,6,0,Karagicheva et al 2016
+91,Calidris canutus,k218,spring body mass,364,12:12 LD,-1,0,Karagicheva et al 2016
+92,Calidris canutus,k220,spring body mass,371,12:12 LD,6,0,Karagicheva et al 2016
+93,Calidris canutus,k236,spring body mass,357,12:12 LD,-8,0,Karagicheva et al 2016
+94,Calidris canutus,k277,spring body mass,363,12:12 LD,-2,0,Karagicheva et al 2016
+95,Calidris canutus,k281,spring body mass,329,12:12 LD,-36,0,Karagicheva et al 2016
+96,Calidris canutus,k161,spring body mass,349,12:12 LD,-16,0,Karagicheva et al 2016
+97,Calidris canutus,k178,spring body mass,349,12:12 LD,-16,0,Karagicheva et al 2016
+98,Calidris canutus,k192,spring body mass,371,12:12 LD,6,0,Karagicheva et al 2016
+99,Calidris canutus,k226,spring body mass,364,12:12 LD,-1,0,Karagicheva et al 2016
+100,Calidris canutus,k213,spring body mass,378,12:12 LD,13,0,Karagicheva et al 2016
+101,Calidris canutus,k295,spring body mass,384,12:12 LD,19,0,Karagicheva et al 2016
+102,Calidris canutus,k385,spring body mass,322,12:12 LD,-43,0,Karagicheva et al 2016
+103,Calidris tenuirostris,blue,spring body mass,380,12:12 LD,15,0,Piersma et al. 2008
+104,Calidris tenuirostris,green,spring body mass,395,12:12 LD,30,0,Piersma et al. 2008
+105,Calidris tenuirostris,yellow,spring body mass,380,12:12 LD,15,0,Piersma et al. 2008
+106,Calidris tenuirostris,white,spring body mass,380,12:12 LD,15,0,Piersma et al. 2008
+107,Calidris tenuirostris,blue,moult spring,365,12:12 LD,0,0,Piersma et al. 2008
+108,Calidris tenuirostris,green,moult spring,380,12:12 LD,15,0,Piersma et al. 2008
+109,Calidris tenuirostris,yellow,moult spring,350,12:12 LD,-15,0,Piersma et al. 2008
+110,Calidris tenuirostris,white,moult spring,365,12:12 LD,0,0,Piersma et al. 2008
+111,Calidris tenuirostris,blue,moult autumn,335,12:12 LD,-30,0,Piersma et al. 2008
+112,Calidris tenuirostris,green,moult autumn,365,12:12 LD,0,0,Piersma et al. 2008
+113,Calidris tenuirostris,yellow,moult autumn,365,12:12 LD,0,0,Piersma et al. 2008
+114,Calidris tenuirostris,white,moult autumn,365,12:12 LD,0,0,Piersma et al. 2008
+115,Calidris tenuirostris,blue,moult wing,425,12:12 LD,60,0,Piersma et al. 2008
+116,Calidris tenuirostris,green,moult wing,455,12:12 LD,90,0,Piersma et al. 2008
+117,Calidris tenuirostris,yellow,moult wing,455,12:12 LD,90,0,Piersma et al. 2008
+118,Calidris tenuirostris,white,moult wing,425,12:12 LD,60,0,Piersma et al. 2008
+119,Calidris tenuirostris,blue,spring body mass,365,12:12 LD,0,1,Piersma et al. 2008
+120,Calidris tenuirostris,green,spring body mass,380,12:12 LD,15,1,Piersma et al. 2008
+121,Calidris tenuirostris,white,spring body mass,365,12:12 LD,0,1,Piersma et al. 2008
+122,Calidris tenuirostris,blue,moult spring,350,12:12 LD,-15,1,Piersma et al. 2008
+123,Calidris tenuirostris,green,moult spring,290,12:12 LD,-75,1,Piersma et al. 2008
+124,Calidris tenuirostris,yellow,moult spring,365,12:12 LD,0,1,Piersma et al. 2008
+125,Calidris tenuirostris,white,moult spring,275,12:12 LD,-90,1,Piersma et al. 2008
+126,Calidris tenuirostris,blue,moult autumn,440,12:12 LD,75,1,Piersma et al. 2008
+127,Calidris tenuirostris,green,moult autumn,395,12:12 LD,30,1,Piersma et al. 2008
+128,Calidris tenuirostris,yellow,moult autumn,410,12:12 LD,45,1,Piersma et al. 2008
+129,Calidris tenuirostris,white,moult autumn,245,12:12 LD,-120,1,Piersma et al. 2008
+130,Calidris tenuirostris,blue,moult wing,380,12:12 LD,15,1,Piersma et al. 2008
+131,Calidris tenuirostris,green,moult wing,365,12:12 LD,0,1,Piersma et al. 2008
+132,Calidris tenuirostris,yellow,moult wing,395,12:12 LD,30,1,Piersma et al. 2008
+133,Calidris tenuirostris,white,moult wing,380,12:12 LD,15,1,Piersma et al. 2008
+134,Ficedula albicollis,1,autumn body mass,455,13:11 LD,90,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+135,Ficedula albicollis,2,autumn body mass,395,13:11 LD,30,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+136,Ficedula albicollis,3,autumn body mass,425,13:11 LD,60,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+137,Ficedula albicollis,4,autumn body mass,395,13:11 LD,30,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+138,Ficedula albicollis,5,autumn body mass,380,13:11 LD,15,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+139,Ficedula albicollis,6,autumn body mass,365,13:11 LD,0,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+140,Ficedula albicollis,7,autumn body mass,395,13:11 LD,30,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+141,Ficedula albicollis,8,autumn body mass,395,13:11 LD,30,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+142,Ficedula albicollis,9,autumn body mass,395,13:11 LD,30,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+143,Ficedula albicollis,10,autumn body mass,380,13:11 LD,15,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+144,Ficedula albicollis,1,moult autumn,380,13:11 LD,15,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+145,Ficedula albicollis,2,moult autumn,395,13:11 LD,30,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+146,Ficedula albicollis,3,moult autumn,425,13:11 LD,60,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+147,Ficedula albicollis,4,moult autumn,380,13:11 LD,15,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+148,Ficedula albicollis,5,moult autumn,380,13:11 LD,15,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+149,Ficedula albicollis,6,moult autumn,365,13:11 LD,0,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+150,Ficedula albicollis,7,moult autumn,395,13:11 LD,30,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+151,Ficedula albicollis,8,moult autumn,395,13:11 LD,30,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+152,Ficedula albicollis,9,moult autumn,365,13:11 LD,0,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+153,Ficedula albicollis,1,moult autumn,380,13:11 LD,15,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+154,Ficedula albicollis,3,moult spring,380,13:11 LD,15,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+155,Ficedula albicollis,4,moult spring,395,13:11 LD,30,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+156,Ficedula albicollis,5,moult spring,395,13:11 LD,30,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+157,Ficedula albicollis,6,moult spring,365,13:11 LD,0,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+158,Ficedula albicollis,7,moult spring,440,13:11 LD,75,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+159,Ficedula albicollis,8,moult spring,440,13:11 LD,75,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+160,Ficedula albicollis,9,moult spring,365,13:11 LD,0,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+161,Ficedula albicollis,10,moult spring,380,13:11 LD,15,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+162,Ficedula albicollis,4,autumn body mass,380,13:11 LD,15,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+163,Ficedula albicollis,5,autumn body mass,410,13:11 LD,45,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+164,Ficedula albicollis,6,autumn body mass,395,13:11 LD,30,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+165,Ficedula albicollis,7,autumn body mass,395,13:11 LD,30,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+166,Ficedula albicollis,8,autumn body mass,425,13:11 LD,60,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+167,Ficedula albicollis,9,autumn body mass,365,13:11 LD,0,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+168,Ficedula albicollis,10,autumn body mass,395,13:11 LD,30,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+169,Ficedula albicollis,3,moult autumn,350,13:11 LD,-15,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+170,Ficedula albicollis,4,moult autumn,395,13:11 LD,30,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+171,Ficedula albicollis,5,moult autumn,410,13:11 LD,45,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+172,Ficedula albicollis,6,moult autumn,395,13:11 LD,30,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+173,Ficedula albicollis,7,moult autumn,410,13:11 LD,45,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+174,Ficedula albicollis,8,moult autumn,395,13:11 LD,30,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+175,Ficedula albicollis,9,moult autumn,395,13:11 LD,30,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+176,Ficedula albicollis,1,moult autumn,410,13:11 LD,45,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+177,Ficedula hypoleuca,3,autumn body mass,425,12:12 LD,60,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+178,Ficedula hypoleuca,4,autumn body mass,425,12:12 LD,60,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+179,Ficedula hypoleuca,5,autumn body mass,425,12:12 LD,60,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+180,Ficedula hypoleuca,6,autumn body mass,425,12:12 LD,60,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+181,Ficedula hypoleuca,7,autumn body mass,410,12:12 LD,45,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+182,Ficedula hypoleuca,4,autumn body mass,425,12:12 LD,60,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+183,Ficedula hypoleuca,2,moult autumn,395,12:12 LD,30,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+184,Ficedula hypoleuca,3,moult autumn,380,12:12 LD,15,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+185,Ficedula hypoleuca,4,moult autumn,395,12:12 LD,30,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+186,Ficedula hypoleuca,5,moult autumn,380,12:12 LD,15,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+187,Ficedula hypoleuca,6,moult autumn,380,12:12 LD,15,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+188,Ficedula hypoleuca,7,moult autumn,395,12:12 LD,30,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+189,Ficedula hypoleuca,8,moult autumn,395,12:12 LD,30,0,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+190,Ficedula hypoleuca,3,moult spring,365,12:12 LD,0,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+191,Ficedula hypoleuca,4,moult spring,395,12:12 LD,30,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+192,Ficedula hypoleuca,5,moult spring,335,12:12 LD,-30,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+193,Ficedula hypoleuca,6,moult spring,410,12:12 LD,45,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+194,Ficedula hypoleuca,7,moult spring,410,12:12 LD,45,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+195,Ficedula hypoleuca,8,moult spring,380,12:12 LD,15,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+196,Ficedula hypoleuca,3,moult autumn,365,12:12 LD,0,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+197,Ficedula hypoleuca,4,moult autumn,425,12:12 LD,60,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+198,Ficedula hypoleuca,5,moult autumn,440,12:12 LD,75,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+199,Ficedula hypoleuca,6,moult autumn,425,12:12 LD,60,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+200,Ficedula hypoleuca,7,moult autumn,425,12:12 LD,60,1,"Gwinner, E., & Schwabl-Benzinger, I. (1982)"
+201,Fringilla coelebs,1,breeding activity,380,12:12 LD,15,1,Dolnik 1974
+202,Fringilla coelebs,1,spring body mass,365,12:12 LD,0,1,Dolnik 1974
+203,Fringilla coelebs,1,moult autumn,425,12:12 LD,60,1,Dolnik 1974
+204,Fringilla coelebs,2,spring body mass,380,12:12 LD,15,1,Dolnik 1974
+205,Fringilla coelebs,2,moult autumn,425,12:12 LD,60,1,Dolnik 1974
+206,Fringilla coelebs,3,breeding activity,425,12:12 LD,60,1,Dolnik 1974
+207,Fringilla coelebs,3,spring body mass,365,12:12 LD,0,1,Dolnik 1974
+208,Fringilla coelebs,3,moult autumn,470,12:12 LD,105,1,Dolnik 1974
+209,Fringilla coelebs,4,breeding activity,395,12:12 LD,30,1,Dolnik 1974
+210,Fringilla coelebs,4,spring body mass,395,12:12 LD,30,1,Dolnik 1974
+211,Fringilla coelebs,4,moult autumn,455,12:12 LD,90,1,Dolnik 1974
+212,Fringilla coelebs,5,breeding activity,425,12:12 LD,60,1,Dolnik 1974
+213,Fringilla coelebs,5,spring body mass,365,12:12 LD,0,1,Dolnik 1974
+214,Fringilla coelebs,5,moult autumn,470,12:12 LD,105,1,Dolnik 1974
+215,Fringilla coelebs,6,breeding activity,395,12:12 LD,30,1,Dolnik 1974
+216,Fringilla coelebs,6,moult autumn,410,12:12 LD,45,1,Dolnik 1974
+217,Fringilla coelebs,7,breeding activity,410,12:12 LD,45,1,Dolnik 1974
+218,Fringilla coelebs,7,moult autumn,470,12:12 LD,105,1,Dolnik 1974
+219,Fringilla coelebs,8,breeding activity,495,12:12 LD,130,1,Dolnik 1974
+220,Fringilla coelebs,8,moult autumn,455,12:12 LD,90,1,Dolnik 1974
+221,Fringilla coelebs,11,autumn body mass,440,12:12 LD,75,1,Dolnik 1974
+222,Fringilla coelebs,11,moult autumn,410,12:12 LD,45,1,Dolnik 1974
+223,Fringilla coelebs,12,autumn body mass,470,12:12 LD,105,1,Dolnik 1974
+224,Fringilla coelebs,12,moult autumn,380,12:12 LD,15,1,Dolnik 1974
+225,Fringilla coelebs,13,autumn body mass,455,12:12 LD,90,1,Dolnik 1974
+226,Fringilla coelebs,13,moult autumn,395,12:12 LD,30,1,Dolnik 1974
+227,Fringilla coelebs,14,autumn body mass,470,12:12 LD,105,1,Dolnik 1974
+228,Fringilla coelebs,14,moult autumn,380,12:12 LD,15,1,Dolnik 1974
+229,Fringilla coelebs,15,moult autumn,410,12:12 LD,45,1,Dolnik 1974
+230,Fringilla coelebs,16,moult autumn,395,12:12 LD,30,1,Dolnik 1974
+231,Fringilla coelebs,17,moult autumn,395,12:12 LD,30,1,Dolnik 1974
+232,Fringilla montifringilla,1,spring body mass,425,10:14 LD,60,1,Pohl 1971
+233,Fringilla montifringilla,1,spring zugunruhe,425,10:14 LD,60,1,Pohl 1971
+234,Fringilla montifringilla,2,spring body mass,485,10:14 LD,120,1,Pohl 1971
+235,Fringilla montifringilla,2,spring zugunruhe,485,10:14 LD,120,1,Pohl 1971
+236,Junco hyemalis,A,testis size,395,24 D,30,1,Holberton&Able 1992
+237,Junco hyemalis,B,testis size,440,24 D,75,1,Holberton&Able 1992
+238,Junco hyemalis,G,testis size,500,24 D,135,1,Holberton&Able 1992
+239,Junco hyemalis,A,spring body mass,425,24 D,60,1,Holberton&Able 1992
+240,Junco hyemalis,B,spring body mass,440,24 D,75,1,Holberton&Able 1992
+241,Junco hyemalis,C,spring body mass,410,24 D,45,1,Holberton&Able 1992
+242,Junco hyemalis,A,moult autumn,335,24 D,-30,1,Holberton&Able 1992
+243,Junco hyemalis,B,moult autumn,635,24 D,270,1,Holberton&Able 1992
+244,Junco hyemalis,C,moult autumn,530,24 D,165,1,Holberton&Able 1992
+245,Junco hyemalis,E,moult autumn,365,24 D,0,1,Holberton&Able 1992
+246,Junco hyemalis,F,moult autumn,545,24 D,180,1,Holberton&Able 1992
+247,Junco hyemalis,G,moult autumn,500,24 D,135,1,Holberton&Able 1992
+248,Junco hyemalis,H,moult autumn,530,24 D,165,1,Holberton&Able 1992
+249,Loxia curvirostra,1,spring body mass,275,12:12 LD,-90,1,Berthold 1977
+250,Loxia curvirostra,1,autumn body mass,245,12:12 LD,-120,1,Berthold 1977
+251,Loxia curvirostra,2,spring body mass,305,12:12 LD,-60,1,Berthold 1977
+252,Loxia curvirostra,2,autumn body mass,305,12:12 LD,-60,1,Berthold 1977
+253,Loxia curvirostra,3,spring body mass,365,12:12 LD,0,1,Berthold 1977
+254,Loxia curvirostra,_00,moult spring,260,12:12 LD,-105,0,Berthold 1982
+255,Loxia curvirostra,_00,moult autumn,275,12:12 LD,-90,1,Berthold 1982
+256,Loxia curvirostra,_00,moult spring,335,12:12 LD,-30,1,Berthold 1982
+257,Loxia curvirostra,_61,moult spring,245,12:12 LD,-120,0,Berthold 1982
+258,Loxia curvirostra,_61,moult autumn,320,12:12 LD,-45,1,Berthold 1982
+259,Loxia curvirostra,_61,moult spring,365,12:12 LD,0,1,Berthold 1982
+260,Loxia curvirostra,_99,moult spring,255,12:12 LD,-110,0,Berthold 1982
+261,Loxia curvirostra,_99,moult autumn,290,12:12 LD,-75,1,Berthold 1982
+262,Loxia curvirostra,_99,moult spring,335,12:12 LD,-30,1,Berthold 1982
+263,Loxia curvirostra,_31,moult spring,230,12:12 LD,-135,0,Berthold 1982
+264,Loxia curvirostra,_31,moult autumn,290,12:12 LD,-75,1,Berthold 1982
+265,Loxia curvirostra,_31,moult spring,350,12:12 LD,-15,1,Berthold 1982
+266,Loxia curvirostra,_59,moult spring,255,12:12 LD,-110,0,Berthold 1982
+267,Loxia curvirostra,_59,moult autumn,305,12:12 LD,-60,1,Berthold 1982
+268,Loxia curvirostra,_59,moult spring,335,12:12 LD,-30,1,Berthold 1982
+269,Loxia curvirostra,_54,moult spring,260,12:12 LD,-105,0,Berthold 1982
+270,Loxia curvirostra,_54,moult autumn,335,12:12 LD,-30,1,Berthold 1982
+271,Loxia curvirostra,_54,moult spring,305,12:12 LD,-60,1,Berthold 1982
+272,Loxia curvirostra,_32,moult autumn,295,12:12 LD,-70,1,Berthold 1982
+273,Loxia curvirostra,_32,moult spring,245,12:12 LD,-120,1,Berthold 1982
+274,Loxia curvirostra,_60,moult spring,275,12:12 LD,-90,0,Berthold 1982
+275,Loxia curvirostra,_60,moult autumn,305,12:12 LD,-60,1,Berthold 1982
+276,Loxia curvirostra,_60,moult spring,365,12:12 LD,0,1,Berthold 1982
+277,Loxia curvirostra,_96,moult spring,245,12:12 LD,-120,0,Berthold 1982
+278,Loxia curvirostra,_96,moult autumn,305,12:12 LD,-60,1,Berthold 1982
+279,Loxia curvirostra,_96,moult spring,260,12:12 LD,-105,1,Berthold 1982
+280,Loxia curvirostra,_51,moult spring,215,12:12 LD,-150,0,Berthold 1982
+281,Loxia curvirostra,_51,moult autumn,290,12:12 LD,-75,1,Berthold 1982
+282,Loxia curvirostra,dash1,gonad size,320,12:12 LD,-45,0,Berthold 1982
+283,Loxia curvirostra,dash1,gonad size,470,12:12 LD,105,1,Berthold 1982
+284,Loxia curvirostra,solid1,gonad size,345,12:12 LD,-20,0,Berthold 1982
+285,Loxia curvirostra,solid1,gonad size,365,12:12 LD,0,1,Berthold 1982
+286,Loxia curvirostra,solid3,gonad size,230,12:12 LD,-135,0,Berthold 1982
+287,Loxia curvirostra,solid3,gonad size,245,12:12 LD,-120,1,Berthold 1982
+288,Loxia curvirostra,dash3,gonad size,170,12:12 LD,-195,0,Berthold 1982
+289,Loxia curvirostra,dash3,gonad size,245,12:12 LD,-120,1,Berthold 1982
+290,Parus cristatus,1,moult spring,320,10:14 LD,-45,0,Berthold 1982
+291,Parus cristatus,2,moult spring,320,10:14 LD,-45,0,Berthold 1982
+292,Parus cristatus,3,moult spring,320,10:14 LD,-45,0,Berthold 1982
+293,Parus cristatus,4,moult spring,325,10:14 LD,-40,0,Berthold 1982
+294,Parus cristatus,5,moult spring,335,10:14 LD,-30,0,Berthold 1982
+295,Parus cristatus,6,moult spring,315,10:14 LD,-50,0,Berthold 1982
+296,Parus cristatus,7,moult spring,305,10:14 LD,-60,0,Berthold 1982
+297,Parus cristatus,8,moult spring,335,10:14 LD,-30,0,Berthold 1982
+298,Parus cristatus,1,moult spring,275,10:14 LD,-90,1,Berthold 1982
+299,Parus cristatus,2,moult spring,320,10:14 LD,-45,1,Berthold 1982
+300,Parus cristatus,3,moult spring,295,10:14 LD,-70,1,Berthold 1982
+301,Parus cristatus,4,moult spring,325,10:14 LD,-40,1,Berthold 1982
+302,Parus cristatus,5,moult spring,305,10:14 LD,-60,1,Berthold 1982
+303,Parus cristatus,6,moult spring,350,10:14 LD,-15,1,Berthold 1982
+304,Parus cristatus,7,moult spring,335,10:14 LD,-30,1,Berthold 1982
+305,Parus cristatus,8,moult spring,320,10:14 LD,-45,1,Berthold 1982
+306,Passer montanus,dotted,gonad size,245,10:14 LD,-120,0,Berthold 1982
+307,Passer montanus,dotted,gonad size,260,10:14 LD,-105,1,Berthold 1982
+308,Passer montanus,solid,gonad size,260,10:14 LD,-105,0,Berthold 1982
+309,Passer montanus,solid,gonad size,230,10:14 LD,-135,1,Berthold 1982
+310,Passer montanus,solid1,gonad size,395,10:14 LD,30,0,Berthold 1982
+311,Passer montanus,solid1,gonad size,335,10:14 LD,-30,1,Berthold 1982
+312,Passer montanus,solid2,gonad size,335,14:10 LD,-30,0,Berthold 1982
+313,Phylloscopus collybita,1,moult autumn,335,12:12 LD,-30,0,Gwinner  1971
+314,Phylloscopus collybita,2,moult autumn,340,12:12 LD,-25,0,Gwinner  1971
+315,Phylloscopus collybita,3,moult autumn,365,12:12 LD,0,0,Gwinner  1971
+316,Phylloscopus collybita,4,moult autumn,380,12:12 LD,15,0,Gwinner  1971
+317,Phylloscopus collybita,5,moult autumn,365,12:12 LD,0,0,Gwinner  1971
+318,Phylloscopus collybita,6,moult autumn,365,12:12 LD,0,0,Gwinner  1971
+319,Phylloscopus collybita,8,moult autumn,335,12:12 LD,-30,0,Gwinner  1971
+320,Phylloscopus trochilus,gelb,moult spring,315,12:12 LD,-50,0,Gwinner 1968
+321,Phylloscopus trochilus,6,autumn zugunruhe,335,12:12 LD,-30,0,Gwinner  1971
+322,Phylloscopus trochilus,7,autumn zugunruhe,365,12:12 LD,0,0,Gwinner  1971
+323,Phylloscopus trochilus,8,autumn zugunruhe,335,12:12 LD,-30,0,Gwinner  1971
+324,Phylloscopus trochilus,9,autumn zugunruhe,350,12:12 LD,-15,0,Gwinner  1971
+325,Phylloscopus trochilus,gelb,moult spring,315,12:12 LD,-50,1,Gwinner  1968
+326,Phylloscopus trochilus,gelb,moult autumn,328,12:12 LD,-37,1,Gwinner  1968
+327,Phylloscopus trochilus,rosa,moult spring,386,12:12 LD,21,0,Gwinner  1968
+328,Phylloscopus trochilus,rosa,moult spring,323,12:12 LD,-42,1,Gwinner  1968
+329,Phylloscopus trochilus,rosa,moult autumn,375,12:12 LD,10,1,Gwinner  1968
+330,Saxicola torquata rubicola,1,gonad size,395,12.25:11.75 LD,30,1,Helm et al. 2009
+331,Saxicola torquata rubicola,2,gonad size,320,12.25:11.75 LD,-45,1,Helm et al. 2009
+332,Saxicola torquata rubicola,3,gonad size,320,12.25:11.75 LD,-45,1,Helm et al. 2009
+333,Saxicola torquata rubicola,4,gonad size,290,12.25:11.75 LD,-75,1,Helm et al. 2009
+334,Saxicola torquata rubicola,5,gonad size,335,12.25:11.75 LD,-30,1,Helm et al. 2009
+335,Saxicola torquata rubicola,6,gonad size,320,12.25:11.75 LD,-45,1,Helm et al. 2009
+336,Saxicola torquata rubicola,7,gonad size,335,12.25:11.75 LD,-30,1,Helm et al. 2009
+337,Saxicola torquata rubicola,8,gonad size,380,12.25:11.75 LD,15,1,Helm et al. 2009
+338,Saxicola torquata rubicola,9,gonad size,320,12.25:11.75 LD,-45,1,Helm et al. 2009
+339,Sturnus vulgaris,I11,testis size,335,12:12 LD,-30,1,Gwinner 1981
+340,Sturnus vulgaris,I12,testis size,320,12:12 LD,-45,1,Gwinner 1981
+341,Sturnus vulgaris,I13,testis size,340,12:12 LD,-25,1,Gwinner 1981
+342,Sturnus vulgaris,I14,testis size,485,12:12 LD,120,1,Gwinner 1981
+343,Sturnus vulgaris,I15,testis size,410,12:12 LD,45,1,Gwinner 1981
+344,Sturnus vulgaris,I11,breeding activity,305,12:12 LD,-60,1,Gwinner 1981
+345,Sturnus vulgaris,I12,breeding activity,365,12:12 LD,0,1,Gwinner 1981
+346,Sturnus vulgaris,I13,breeding activity,425,12:12 LD,60,1,Gwinner 1981
+347,Sturnus vulgaris,I15,breeding activity,425,12:12 LD,60,1,Gwinner 1981
+348,Sturnus vulgaris,I17,breeding activity,485,12:12 LD,120,1,Gwinner 1981
+349,Sturnus vulgaris,I11,moult autumn,410,12:12 LD,45,1,Gwinner 1981
+350,Sturnus vulgaris,I12,moult autumn,425,12:12 LD,60,1,Gwinner 1981
+351,Sturnus vulgaris,I13,moult autumn,395,12:12 LD,30,1,Gwinner 1981
+352,Sturnus vulgaris,I14,moult autumn,515,12:12 LD,150,1,Gwinner 1981
+353,Sturnus vulgaris,I15,moult autumn,575,12:12 LD,210,1,Gwinner 1981
+354,Sturnus vulgaris,I16,moult autumn,470,12:12 LD,105,1,Gwinner 1981
+355,Sturnus vulgaris,I17,moult autumn,380,12:12 LD,15,1,Gwinner 1981
+356,Sturnus vulgaris,I23,testis size,395,12:12 LD,30,1,Gwinner 1981
+357,Sturnus vulgaris,I24,testis size,425,12:12 LD,60,1,Gwinner 1981
+358,Sturnus vulgaris,I23,breeding activity,395,12:12 LD,30,1,Gwinner 1981
+359,Sturnus vulgaris,I22,moult autumn,440,12:12 LD,75,1,Gwinner 1981
+360,Sturnus vulgaris,I23,moult autumn,470,12:12 LD,105,1,Gwinner 1981
+361,Sturnus vulgaris,I25,moult autumn,485,12:12 LD,120,1,Gwinner 1981
+362,Sturnus vulgaris,I31,testis size,305,12:12 LD,-60,1,Gwinner 1981
+363,Sturnus vulgaris,I32,testis size,290,12:12 LD,-75,1,Gwinner 1981
+364,Sturnus vulgaris,I33,testis size,305,12:12 LD,-60,1,Gwinner 1981
+365,Sturnus vulgaris,I34,testis size,305,12:12 LD,-60,1,Gwinner 1981
+366,Sturnus vulgaris,I35,testis size,275,12:12 LD,-90,1,Gwinner 1981
+367,Sturnus vulgaris,I33,breeding activity,335,12:12 LD,-30,1,Gwinner 1981
+368,Sturnus vulgaris,I34,breeding activity,410,12:12 LD,45,1,Gwinner 1981
+369,Sturnus vulgaris,I35,breeding activity,275,12:12 LD,-90,1,Gwinner 1981
+370,Sturnus vulgaris,I37,breeding activity,290,12:12 LD,-75,1,Gwinner 1981
+371,Sturnus vulgaris,I31,moult autumn,455,12:12 LD,90,1,Gwinner 1981
+372,Sturnus vulgaris,I32,moult autumn,455,12:12 LD,90,1,Gwinner 1981
+373,Sturnus vulgaris,I33,moult autumn,440,12:12 LD,75,1,Gwinner 1981
+374,Sturnus vulgaris,I34,moult autumn,470,12:12 LD,105,1,Gwinner 1981
+375,Sturnus vulgaris,I35,moult autumn,425,12:12 LD,60,1,Gwinner 1981
+376,Sturnus vulgaris,I38,moult autumn,440,12:12 LD,75,1,Gwinner 1981
+377,Sylvia atricapilla,m2,testis size,320,12:12 LD,-45,1,Berthold et al. 1972b
+378,Sylvia atricapilla,m2,moult spring,310,12:12 LD,-55,1,Berthold et al. 1972b
+379,Sylvia atricapilla,m4,testis size,260,12:12 LD,-105,1,Berthold et al. 1972b
+380,Sylvia atricapilla,m4,moult spring,335,12:12 LD,-30,1,Berthold et al. 1972b
+381,Sylvia atricapilla,m4,moult autumn,350,12:12 LD,-15,1,Berthold et al. 1972b
+382,Sylvia atricapilla,m5,moult spring,335,12:12 LD,-30,1,Berthold et al. 1972b
+383,Sylvia atricapilla,m5,moult autumn,295,12:12 LD,-70,1,Berthold et al. 1972b
+384,Sylvia atricapilla,m8,moult spring,320,12:12 LD,-45,1,Berthold et al. 1972b
+385,Sylvia atricapilla,m8,moult autumn,295,12:12 LD,-70,1,Berthold et al. 1972b
+386,Sylvia borin,1,testis size,320,12:12 LD,-45,1,Berthold et al. 1972b
+387,Sylvia borin,1,spring body mass,265,12:12 LD,-100,1,Berthold et al. 1972b
+388,Sylvia borin,1,autumn body mass,315,12:12 LD,-50,1,Berthold et al. 1972b
+389,Sylvia borin,1,testis size,380,12:12 LD,15,1,Gwinner 1981
+390,Sylvia borin,2,testis size,275,12:12 LD,-90,1,Gwinner 1981
+391,Sylvia borin,3,testis size,395,12:12 LD,30,1,Gwinner 1981
+392,Sylvia borin,4,testis size,425,12:12 LD,60,1,Gwinner 1981
