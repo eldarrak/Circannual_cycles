@@ -1,0 +1,612 @@
+###Supplementary Online Material 1
+
+## Testing for the correlation of free-running circannual period with survival and BMR using MCMCglmm and mulTree
+
+Supplementary 1 to Julia Karagicheva, Eldar Rakhimberdiev, Anatoly Saveliev & Theunis Piersma 2017 _Circannual rhythms functionally linking life histories and life cycles in birds._ - Journal of Functional Ecology 000: 000-000.
+
+Here we provide a code for the analysis presented in the paper, assessing the relationships between the circannual periods and species-specific survival rate (Model 1)and BMR (Model 2). 
+
+We ran both MCMCglmm models using the reviewed data on 14 passerine species and 2 shorebird species (Circannual_cycles_birds_data.csv), and then repeated the procedure on the same dataset with shorebirds excluded. 
+
+Then we extended each glmmMCMC model by incorporating phylogenetic variance in it, using the package mulTree. From the output, we calculated phylogenetic signal and an analogue of Pagel lambda.
+
+
+### Load required packages
+```{r, eval = F}
+
+
+library(snow)
+library(mulTree)
+
+```
+### Because running the four models (Model 1 and Model 2, each with and without shorebirds) takes a long time, you might want to tackle them in separate R windows. Doing so, run thee code below ("PREPARE DATA") before each model.
+
+## PREPARE THE DATA 
+
+### download data from GitHub
+```{r, eval = F}
+##PROVIDE LINK
+```
+### load table with circannual cycles and deviations of circannual period from 365 days (main table "Circannual_cycles_birds_data")
+```{r, eval = F}
+load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\Circannual_cycles_birds_data.RData")
+
+#create unique ID 
+Circannual_cycles_birds_data$uniqueid<-paste(Circannual_cycles_birds_data$Species,Circannual_cycles_birds_data$Reference,Circannual_cycles_birds_data$BirdID,sep="_")
+```
+### load table "Survival_birds_data" with species-specific survival and calculate median per species
+```{r, eval = F}
+surv_sp<-aggregate(Survival_birds_data$survival,by=list(Survival_birds_data$Species),median)
+```
+### add survival values to the main table
+```{r, eval = F}
+Circannual_cycles_birds_data$surv<-NA
+for(i in 1:nrow(Circannual_cycles_birds_data)){
+Circannual_cycles_birds_data$surv[i]<-unique(surv_sp[surv_sp$Group.1==Circannual_cycles_birds_data$species[i],]$x)
+}
+```
+### load table "BMR_birds_data.csv" with species-specific BMR  and calculate median per species
+```{r, eval = F}
+bmr_sp_median<-aggregate(BMR_birds_data$BMR_W,by=list(BMR_birds_data$species),median)
+```
+### add BMR values to the main table
+```{r, eval = F}
+Circannual_cycles_birds_data$bmr<-NA
+for(i in 1:nrow(Circannual_cycles_birds_data)){
+Circannual_cycles_birds_data$bmr[i]<-unique(bmr_sp_median[bmr_sp_median$Group.1==Circannual_cycles_birds_data$Species[i],]$x)
+}
+```
+### load table "Body_mass_birds_data" with species-specific body masses
+```{r, eval = F}
+load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\bodymass.RData")
+```
+### add body mass values to the main table
+```{r, eval = F}
+Circannual_cycles_birds_data$bodymass<-NA
+for(i in 1:nrow(Circannual_cycles_birds_data)){
+Circannual_cycles_birds_data$bodymass[i]<-unique(Body_mass_birds_data[Body_mass_birds_data$Species==Circannual_cycles_birds_data$Species[i],]$bodymass)
+}
+```
+### Get residuals of survival on BMR
+```{r, eval = F}
+Circannual_cycles_birds_data$resbmr<-residuals(lm(log(surv)~log(bmr),data=Circannual_cycles_birds_data))
+```
+### Residuals of deviation of circannual period from 365 days on BMR
+```{r, eval = F}
+Circannual_cycles_birds_data$res_dev_bmr<-residuals(lm(deviation~log(bmr),data=Circannual_cycles_birds_data))
+```
+
+## RUN THE MODELS
+
+## Circannual period and survival rate
+
+### MODEL 1 WITH SHOREBIRDS
+
+### set priors
+```{r, eval = F}
+p.var<-var(Circannual_cycles_birds_data$res_dev_bmr,na.rm=TRUE)
+pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),G5=list(V = matrix(p.var/2), nu = 1)))#
+pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))#
+```
+### run MCMCglmm without pedigree (phylogenetic variable)
+```{r, eval = F}
+model1<- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+
+model2<- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+
+model1$DIC
+model2$DIC
+
+# The best model
+summary(model1)
+
+ # # # # Iterations = 30001:1299951
+ # # # # Thinning interval  = 50
+ # # # # Sample size  = 25400 
+
+ # # # # DIC: 4000.789 
+
+ # # # # G-structure:  ~uniqueid
+
+         # # # # post.mean l-95% CI u-95% CI eff.samp
+# # # # uniqueid     558.7    262.2    880.8    25400
+
+               # # # # ~Trait
+
+      # # # # post.mean l-95% CI u-95% CI eff.samp
+# # # # Trait      1099      263     2375    25400
+
+               # # # # ~Reference
+
+          # # # # post.mean l-95% CI u-95% CI eff.samp
+# # # # Reference      1379    199.4     3129    26957
+
+               # # # # ~species
+
+        # # # # post.mean l-95% CI u-95% CI eff.samp
+# # # # species     670.9    112.9     1566    25400
+
+ # # # # R-structure:  ~units
+
+      # # # # post.mean l-95% CI u-95% CI eff.samp
+# # # # units      1282     1059     1520    25400
+
+ # # # # Location effects: res_dev_bmr ~ resbmr:cyclenr_char + cyclenr_char 
+
+                     # # # # post.mean l-95% CI u-95% CI eff.samp   pMCMC   
+# # # # (Intercept)             -6.419  -40.786   26.613    25400 0.69850   
+# # # # cyclenr_char1           10.411    1.506   19.205    25400 0.02087 * 
+# # # # resbmr:cyclenr_char0   196.127   71.361  325.515    25350 0.00315 **
+# # # # resbmr:cyclenr_char1   118.994   -1.772  239.422    25547 0.05165 . 
+# # # # ---
+# # # # Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+# # # # > 
+
+# control for autocorrelation
+
+autocorr(model1$VCV)
+```
+
+### Run the best model with phylogeny using mulTree
+
+### set the directory, where you wish to store the outputs
+```{r, eval = F}
+setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/surv_with_shorebirds")
+#load phylogenetic trees (including shorebirds)
+load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\with_shorebirds_tree_subset.RData")
+tr_full<-with_shorebirds_tree_subset
+
+# set the model structure and parameters
+mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
+formula_fintest<-res_dev_bmr~resbmr:cyclenr_char+cyclenr_char
+mulTree.parameters<-c(5000000, 5000, 100000)
+
+# run mulTree
+
+surv_w_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "surv_w_shore", chains=8, parallel='SOCK')
+```
+
+
+### MODEL 1 NO SHOREBIRDS
+
+### remove shorebirds from the data table
+```{r, eval = F}
+Circannual_cycles_no_shorebirds<-Circannual_cycles_birds_data[!(Circannual_cycles_birds_data$Species %in% c("Calidris canutus", "Calidris tenuirostris")),]
+```
+### set priors
+```{r, eval = F}
+p.var<-var(Circannual_cycles_birds_data$res_dev_bmr,na.rm=TRUE)
+pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),G5=list(V = matrix(p.var/2), nu = 1)))#
+pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))#
+```
+### run MCMCglmm without pedigree (phylogenetic variable)
+```{r, eval = F}
+model1_no<- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+
+model2_no<- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+
+model1_no$DIC
+model2_no$DIC
+
+# the best model
+
+summary(model1_no)
+
+
+# # # Iterations = 30001:1299951
+ # # # Thinning interval  = 50
+ # # # Sample size  = 25400 
+
+ # # # DIC: 2674.365 
+
+ # # # G-structure:  ~uniqueid
+
+         # # # post.mean l-95% CI u-95% CI eff.samp
+# # # uniqueid     762.9    337.5     1196    25400
+
+               # # # ~Trait
+
+      # # # post.mean l-95% CI u-95% CI eff.samp
+# # # Trait      1077    211.7     2478    25617
+
+               # # # ~Reference
+
+          # # # post.mean l-95% CI u-95% CI eff.samp
+# # # Reference      2144    204.4     5182    25400
+
+               # # # ~species
+
+        # # # post.mean l-95% CI u-95% CI eff.samp
+# # # species     922.3    113.5     2382    25400
+
+ # # # R-structure:  ~units
+
+      # # # post.mean l-95% CI u-95% CI eff.samp
+# # # units      1344     1028     1681    24765
+
+ # # # Location effects: res_dev_bmr ~ resbmr:cyclenr_char + cyclenr_char 
+
+                     # # # post.mean l-95% CI u-95% CI eff.samp   pMCMC   
+# # # (Intercept)            -11.237  -54.014   30.641    24511 0.58433   
+# # # cyclenr_char1            8.284   -6.171   22.890    25400 0.26252   
+# # # resbmr:cyclenr_char0   222.401   68.197  380.447    25400 0.00457 **
+# # # resbmr:cyclenr_char1   110.334  -35.269  263.632    25400 0.13039   
+# # # ---
+# # # Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+# control for autocorrelation
+
+autocorr(model1_no$VCV)
+```
+### Run the best model with phylogeny using mulTree
+
+### set the directory, where you wish to store the outputs
+```{r, eval = F}
+setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/surv_no_shorebirds")
+
+#load phylogenetic trees not containing shorebirds
+
+load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\all_birds_tree_subset.RData")
+tr_full<-all_birds_tree_subset
+
+# set the model structure and parameters
+
+mulTree_data <- as.mulTree(data = Circannual_cycles_no_shorebirds, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
+formula_fintest<-res_dev_bmr~resbmr:cyclenr_char+cyclenr_char
+mulTree.parameters<-c(5000000, 5000, 100000)
+
+# run mulTree
+surv_n_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "surv_n_shore", chains=8, parallel='SOCK')
+```
+
+## Circannual period and BMR
+
+### MODEL 2 WITH SHOREBIRDS
+
+### residuals of the deviation of circannual cycle from 365 days (the response variable) and log(BMR) on log(survival)
+```{r, eval = F}
+Circannual_cycles_birds_data$devbysurv<-residuals(lm(deviation~log(surv),data=Circannual_cycles_birds_data))
+Circannual_cycles_birds_data$bmrbysurv<-residuals(lm(log(bmr)~log(surv),data=Circannual_cycles_birds_data))
+```
+### set priors
+```{r, eval = F}
+p.var<-var(Circannual_cycles_birds_data$devbysurv,na.rm=TRUE)
+pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),G5=list(V = matrix(p.var/2), nu = 1)))#
+pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))#
+```
+### run MCMCglmm without phylogeny
+```{r, eval = F}
+model1_bmr<- MCMCglmm(devbysurv~bmrbysurv:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+
+model2_bmr<- MCMCglmm(devbysurv~bmrbysurv+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+
+model1_bmr$DIC
+model2_bmr$DIC
+
+#the best model
+
+summary(model1_bmr)
+ # # # Iterations = 30001:1299951
+ # # # Thinning interval  = 50
+ # # # Sample size  = 25400 
+
+ # # # DIC: 4006.412 
+
+ # # # G-structure:  ~uniqueid
+
+         # # # post.mean l-95% CI u-95% CI eff.samp
+# # # uniqueid     544.2    249.8    867.7    24843
+
+               # # # ~Trait
+
+      # # # post.mean l-95% CI u-95% CI eff.samp
+# # # Trait      1079    251.6     2344    26048
+
+               # # # ~Reference
+
+          # # # post.mean l-95% CI u-95% CI eff.samp
+# # # Reference      1317    185.4     3023    24651
+
+               # # # ~species
+
+        # # # post.mean l-95% CI u-95% CI eff.samp
+# # # species     675.3    115.3     1571    24807
+
+ # # # R-structure:  ~units
+
+      # # # post.mean l-95% CI u-95% CI eff.samp
+# # # units      1304     1079     1543    25400
+
+ # # # Location effects: devbysurv ~ bmrbysurv:cyclenr_char + cyclenr_char 
+
+                        # # # post.mean  l-95% CI  u-95% CI eff.samp  pMCMC   
+# # # (Intercept)               -3.7186  -36.5992   29.8792    25400 0.8224   
+# # # cyclenr_char1              9.2915    0.2732   18.1324    24378 0.0424 * 
+# # # bmrbysurv:cyclenr_char0  -91.8645 -160.9604  -23.3079    25400 0.0100 **
+# # # bmrbysurv:cyclenr_char1  -63.3397 -127.7827    1.6500    25400 0.0536 . 
+# # # ---
+# # # Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+# control for autocorrelation
+
+autocorr(model1_no$VCV)
+```
+### Run the best model with phylogeny using mulTree
+
+### set the directory, where you wish to store the outputs
+```{r, eval = F}
+setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/bmr_with_shorebirds")
+
+###load phylogenetic trees containing shorebirds
+
+load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\with_shorebirds_tree_subset.RData")
+tr_full<-with_shorebirds_tree_subset
+
+### set the model structure and parameters
+mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
+formula_fintest<-devbysurv~bmrbysurv:cyclenr_char+cyclenr_char
+mulTree.parameters<-c(5000000, 5000, 100000)
+
+# run mulTree
+bmr_w_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "bmr_w_shore", chains=8, parallel='SOCK')
+```
+
+### MODEL 2 NO SHOREBIRDS
+
+### residuals of the deviation of circannual cycle from 365 days (the response variable) and log(BMR) on log(survival)
+```{r, eval = F}
+Circannual_cycles_birds_data$bmrbysurv<-residuals(lm(log(bmr)~log(surv),data=Circannual_cycles_birds_data))
+Circannual_cycles_birds_data$devbysurv<-residuals(lm(deviation~log(surv),data=Circannual_cycles_birds_data))
+```
+### exclude shorebirds from the data table
+```{r, eval = F}
+Circannual_cycles_no_shorebirds<-Circannual_cycles_birds_data[!(Circannual_cycles_birds_data$Species %in% c("Calidris canutus", "Calidris tenuirostris")),]
+```
+### set priors
+```{r, eval = F}
+p.var<-var(Circannual_cycles_birds_data$devbysurv,na.rm=TRUE)
+pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),G5=list(V = matrix(p.var/2), nu = 1)))#
+pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))#
+```
+### run MCMCglmm without phylogeny
+```{r, eval = F}
+model1_bmr<- MCMCglmm(devbysurv~bmrbysurv:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+model2_bmr<- MCMCglmm(devbysurv~bmrbysurv+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+
+model1_bmr$DIC
+model2_bmr$DIC
+
+# the best model
+
+summary(model1_bmr)
+
+ # # # Iterations = 30001:1299951
+ # # # Thinning interval  = 50
+ # # # Sample size  = 25400 
+
+ # # # DIC: 2673.706 
+
+ # # # G-structure:  ~uniqueid
+
+         # # # post.mean l-95% CI u-95% CI eff.samp
+# # # uniqueid     761.4    333.6     1194    25375
+
+               # # # ~Trait
+
+      # # # post.mean l-95% CI u-95% CI eff.samp
+# # # Trait      1069    196.9     2444    25400
+
+               # # # ~Reference
+
+          # # # post.mean l-95% CI u-95% CI eff.samp
+# # # Reference      2077    213.4     5054    25400
+
+               # # # ~species
+
+        # # # post.mean l-95% CI u-95% CI eff.samp
+# # # species     887.4    120.7     2263    25400
+
+ # # # R-structure:  ~units
+
+      # # # post.mean l-95% CI u-95% CI eff.samp
+# # # units      1339     1027     1683    25400
+
+ # # # Location effects: devbysurv ~ bmrbysurv:cyclenr_char + cyclenr_char 
+
+                        # # # post.mean l-95% CI u-95% CI eff.samp  pMCMC  
+# # # (Intercept)               -13.367  -55.701   26.617    25400 0.5056  
+# # # cyclenr_char1              15.161    2.285   28.432    25400 0.0213 *
+# # # bmrbysurv:cyclenr_char0  -104.965 -187.625  -23.421    25400 0.0111 *
+# # # bmrbysurv:cyclenr_char1   -50.822 -129.462   26.764    25400 0.1882  
+# # # ---
+# # # Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+# # # control for autocorrelation
+
+autocorr(model1_no$VCV)
+```
+### Run the best model with phylogeny using mulTree
+
+### set the directory, where you wish to store the outputs
+```{r, eval = F}
+setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/bmr_no_shorebirds")
+
+# load phylogenetic trees without shorebirds
+
+load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\all_birds_tree_subset.RData")
+tr_full<-all_birds_tree_subset
+
+# set the model structure and parameters
+
+mulTree_data <- as.mulTree(data = Circannual_cycles_no_shorebirds, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
+formula_fintest<-devbysurv~bmrbysurv:cyclenr_char+cyclenr_char
+mulTree.parameters<-c(5000000, 5000, 100000)
+
+# run mulTree
+
+bmr_n_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "bmr_n_shore", chains=8, parallel='SOCK')
+```
+
+
+
+## EXTRACT mulTree OUTPUT 
+### we here use Model 1 with shorebirds as an example
+
+### it is very likely that you will have to do it in a new R window. Therefore, again:
+### load the packages
+```{r, eval = F}
+library(snow)
+library(mulTree)
+```
+### set work directory, where the model output is stored
+```{r, eval = F}
+setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/surv_with_shorebirds")
+```
+
+## Look if all the chains have converged
+
+### this function gets convergence parameters from 'conv' files, automatically saved in the same directory as model outputs
+```{r, eval = F}
+extract_conv<-function(model_name) {
+  Files<-list.files( pattern=paste0(model_name,'.*_conv'))
+  cat(length(Files), 'files found\n')
+  Res<-c()
+  for(i in 1:length(Files)){
+  mod<-load(Files[i])
+  treename<-Files[i]
+  res<-unlist(converge.test)<1.1
+Res1<-c(treename,res)
+Res<-rbind(Res,Res1)
+  }
+  return(Res)
+  }
+  ```
+### control for convergence
+```{r, eval = F}
+conv_mother<-extract_conv('surv_w_shore')
+```
+## Collect mulTree outputs
+
+### you can first look at one of the models output, to see its structure
+```{r, eval = F}
+load("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/bmr_no_shorebirds/bmr_n_shore-tree1_chain1.rda")
+summary(model)
+```
+# # # we need p-values (pMCMC) for the fixed parameters: 
+# # #pMCMC_cycle: intercept between the transitory (baseline) and full cycle (cyclenr_char1)
+# # #pMCMC_surv_cycle_0: slope for the transitory cycle
+# # #pMCMC_surv_cycle_1: slope for the full cycle
+
+### function to extract pMCMC
+```{r, eval = F}
+extract_pMCMC<-function(model_name) {
+  Files<-list.files( pattern=paste0(model_name,'.*_chain'))
+  cat(length(Files), 'files found\n')
+	pMCMC_cycle<-c()
+	pMCMC_slope_cycle_0<-c()
+	pMCMC_slope_cycle_1<-c()
+
+     for(i in 1:length(Files)){
+  mod<-load(Files[i])
+  pMCMC_cycle <-c(pMCMC_cycle, summary(model)$solutions[18])
+  pMCMC_slope_cycle_0 <-c(pMCMC_slope_cycle_0, summary(model)$solutions[19])
+  pMCMC_slope_cycle_1 <-c(pMCMC_slope_cycle_1, summary(model)$solutions[20])
+
+  }
+  Res<-list(pMCMC_cycle=pMCMC_cycle,pMCMC_slope_cycle_0=pMCMC_slope_cycle_0,pMCMC_slope_cycle_1=pMCMC_slope_cycle_1)
+  return(Res)
+}
+```
+### extract pMCMC for the model
+```{r, eval = F}
+pMCMC<-extract_pMCMC('bmr_n_shore')
+summary(pMCMC$pMCMC_cycle)
+summary(pMCMC$pMCMC_slope_cycle_0)
+summary(pMCMC$pMCMC_slope_cycle_1)
+```
+### function for extracting fixed effects
+```{r, eval = F}
+extract_fixed<-function(model_name) {
+  Files<-list.files( pattern=paste0(model_name,'.*_chain'))
+  cat(length(Files), 'files found\n')
+	Intercept<-c()
+	cycle_nr_1<-c()
+	slope_cycle_0<-c()
+	slope_cycle_1<-c()
+  
+     for(i in 1:length(Files)){
+  mod<-load(Files[i])
+  Intercept <-c(Intercept, model$Sol[,1])
+  cycle_nr_1 <-c(cycle_nr_1, model$Sol[,2])
+  slope_cycle_0 <-c(slope_cycle_0, model$Sol[,3])
+  slope_cycle_1 <-c(slope_cycle_1, model$Sol[,4])
+  }
+  Res<-list(Intercept=Intercept, cycle_nr_1=cycle_nr_1,slope_cycle_0=slope_cycle_0,slope_cycle_1=slope_cycle_1)
+  return(Res)
+}
+```
+### extract fixed effects
+```{r, eval = F}
+fixed_effects<-extract_fixed('surv_w_shore')
+summary(fixed_effects$Intercept)
+summary(fixed_effects$cycle_nr_1)
+summary(fixed_effects$slope_cycle_0)
+summary(fixed_effects$slope_cycle_1)
+
+quantile(fixed_effects$Intercept,c(0.025,0.975))
+quantile(fixed_effects$cycle_nr_1,c(0.025,0.975))
+quantile(fixed_effects$slope_cycle_0,c(0.025,0.975))
+quantile(fixed_effects$slope_cycle_1,c(0.025,0.975))
+```
+
+### function for extracting random effects
+```{r, eval = F}
+extract_random<-function(model_name) {
+  Files<-list.files( pattern=paste0(model_name,'.*_chain'))
+  cat(length(Files), 'files found\n')
+  uniqueid_post<-c()
+  Trait_post<-c()
+  Reference_post<-c()
+  animal_post<-c()
+  species_post<-c()
+  units_post<-c()
+     for(i in 1:length(Files)){
+  mod<-load(Files[i])
+  uniqueid_post <-c(uniqueid_post, model$VCV[,1])
+  Trait_post <-c(Trait_post, model$VCV[,2])
+  Reference_post <-c(Reference_post, model$VCV[,3])
+  animal_post <-c(animal_post, model$VCV[,4])
+  species_post <-c(species_post, model$VCV[,5])
+  units_post <-c(units_post, model$VCV[,6])
+   
+  }
+  Res<-list(uniqueid_post=uniqueid_post, Trait_post=Trait_post,Reference_post=Reference_post,animal_post=animal_post, species_post=species_post,units_post=units_post)
+  return(Res)
+}
+```
+### extract random effects
+```{r, eval = F}
+random_effects<-extract_random('bmr_n_shore')
+summary(random_effects$uniqueid_post)
+summary(random_effects$Trait_post)
+summary(random_effects$Reference_post)
+summary(random_effects$animal_post)
+summary(random_effects$species_post)
+summary(random_effects$units_post)
+
+quantile(random_effects$uniqueid_post,c(0.025,0.975))
+quantile(random_effects$Trait_post,c(0.025,0.975))
+quantile(random_effects$Reference_post,c(0.025,0.975))
+quantile(random_effects$animal_post,c(0.025,0.975))
+quantile(random_effects$species_post,c(0.025,0.975))
+quantile(random_effects$units_post,c(0.025,0.975))
+```
+
+### calculate phylogenetic signal
+```{r, eval = F}
+phyl_sig<-var(random_effects$animal_post)/(var(random_effects$uniqueid_post)+var(random_effects$Trait_post)+var(random_effects$Reference_post)+var(random_effects$animal_post)+var(random_effects$species_post)+var(random_effects$units_post))
+
+lambda<-var(random_effects$animal_post)/(var(random_effects$animal_post)+var(random_effects$species_post))
+```
+
