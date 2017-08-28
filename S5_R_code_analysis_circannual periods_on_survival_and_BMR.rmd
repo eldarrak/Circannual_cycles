@@ -33,14 +33,15 @@ Circannual_cycles_birds_data$uniqueid<-paste(Circannual_cycles_birds_data$specie
 ```
 load table "Survival_birds_data" with species-specific survival and calculate median per species
 ```{r, eval = F}
-
-surv_sp<-aggregate(Survival_birds_data$survival,by=list(Survival_birds_data$Species),median)
+Survival_birds_data<-read.csv('https://git.io/v5Gtq',stringsAsFactors=F)
+surv_sp<-aggregate(Survival_birds_data$survival,by=list(Survival_birds_data$species),median)
 ```
 add survival values to the main table
 ```{r, eval = F}
 Circannual_cycles_birds_data$surv<-NA
 for(i in 1:nrow(Circannual_cycles_birds_data)){
-Circannual_cycles_birds_data$surv[i]<-unique(surv_sp[surv_sp$Group.1==Circannual_cycles_birds_data$species[i],]$x)
+Circannual_cycles_birds_data$surv[i]<-unique(surv_sp[surv_sp$Group.1 %in% Circannual_cycles_birds_data$species[i],]$x)
+print(i)
 }
 ```
 load table "BMR_birds_data.csv" with species-specific BMR  and calculate median per species
