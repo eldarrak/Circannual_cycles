@@ -25,14 +25,15 @@ download data from GitHub
 ```
 load table with circannual cycles and deviations of circannual period from 365 days (main table "Circannual_cycles_birds_data")
 ```{r, eval = F}
-load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\Circannual_cycles_birds_data.RData")
+Circannual_cycles_birds_data<-read.csv('https://git.io/v5GIF',stringsAsFactors=F)
 ```
 create unique ID 
 ```{r, eval = F}
-Circannual_cycles_birds_data$uniqueid<-paste(Circannual_cycles_birds_data$Species,Circannual_cycles_birds_data$Reference,Circannual_cycles_birds_data$BirdID,sep="_")
+Circannual_cycles_birds_data$uniqueid<-paste(Circannual_cycles_birds_data$species,Circannual_cycles_birds_data$Reference,Circannual_cycles_birds_data$BirdID_char,sep="_")
 ```
 load table "Survival_birds_data" with species-specific survival and calculate median per species
 ```{r, eval = F}
+
 surv_sp<-aggregate(Survival_birds_data$survival,by=list(Survival_birds_data$Species),median)
 ```
 add survival values to the main table
