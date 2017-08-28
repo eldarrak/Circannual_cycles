@@ -1,8 +1,7 @@
-###Supplementary Online Material 1
-
+###Appendix S5
 ## Testing for the correlation of free-running circannual period with survival and BMR using MCMCglmm and mulTree
 
-Supplementary 1 to Julia Karagicheva, Eldar Rakhimberdiev, Anatoly Saveliev & Theunis Piersma 2017 _Circannual rhythms functionally linking life histories and life cycles in birds._ - Journal of Functional Ecology 000: 000-000.
+Supplementary online material  to Julia Karagicheva, Eldar Rakhimberdiev, Anatoly Saveliev & Theunis Piersma 2017 _Circannual rhythms functionally linking life histories and life cycles in birds._ - Journal of Functional Ecology 000: 000-000.
 
 Here we provide a code for the analysis presented in the paper, assessing the relationships between the circannual periods and species-specific survival rate (Model 1)and BMR (Model 2). 
 
