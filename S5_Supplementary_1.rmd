@@ -145,9 +145,9 @@ summary(model1)
 autocorr(model1$VCV)
 ```
 
-### Run the best model with phylogeny using mulTree
+Run the best model with phylogeny using mulTree
 
-### set the directory, where you wish to store the outputs
+set the directory, where you wish to store the outputs
 ```{r, eval = F}
 setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/surv_with_shorebirds")
 #load phylogenetic trees (including shorebirds)
