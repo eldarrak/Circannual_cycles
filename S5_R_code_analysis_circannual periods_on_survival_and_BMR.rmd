@@ -17,7 +17,7 @@ library(mulTree)
 ```
 Because running the four models (Model 1 and Model 2, each with and without shorebirds) takes a long time, you might want to tackle them in separate R windows. Doing so, run thee code below ("PREPARE DATA") before each model.
 
-###PREPARE THE DATA 
+## PREPARE THE DATA 
 
 download data from GitHub
 ```{r, eval = F}
@@ -53,22 +53,22 @@ for(i in 1:nrow(Circannual_cycles_birds_data)){
 Circannual_cycles_birds_data$bmr[i]<-unique(bmr_sp_median[bmr_sp_median$Group.1==Circannual_cycles_birds_data$Species[i],]$x)
 }
 ```
-### load table "Body_mass_birds_data" with species-specific body masses
+load table "Body_mass_birds_data" with species-specific body masses
 ```{r, eval = F}
 load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\bodymass.RData")
 ```
-### add body mass values to the main table
+add body mass values to the main table
 ```{r, eval = F}
 Circannual_cycles_birds_data$bodymass<-NA
 for(i in 1:nrow(Circannual_cycles_birds_data)){
 Circannual_cycles_birds_data$bodymass[i]<-unique(Body_mass_birds_data[Body_mass_birds_data$Species==Circannual_cycles_birds_data$Species[i],]$bodymass)
 }
 ```
-### Get residuals of survival on BMR
+Get residuals of survival on BMR
 ```{r, eval = F}
 Circannual_cycles_birds_data$resbmr<-residuals(lm(log(surv)~log(bmr),data=Circannual_cycles_birds_data))
 ```
-### Residuals of deviation of circannual period from 365 days on BMR
+Residuals of deviation of circannual period from 365 days on BMR
 ```{r, eval = F}
 Circannual_cycles_birds_data$res_dev_bmr<-residuals(lm(deviation~log(bmr),data=Circannual_cycles_birds_data))
 ```
@@ -94,7 +94,7 @@ model2<- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,random= ~uniqueid+Trait+Refere
 model1$DIC
 model2$DIC
 
-# The best model
+### The best model
 summary(model1)
 
  # # # # Iterations = 30001:1299951
@@ -144,7 +144,7 @@ summary(model1)
 autocorr(model1$VCV)
 ```
 
-Run the best model with phylogeny using mulTree
+### Run the best model with phylogeny using mulTree
 
 set the directory, where you wish to store the outputs
 ```{r, eval = F}
@@ -237,7 +237,7 @@ autocorr(model1_no$VCV)
 ```
 ### Run the best model with phylogeny using mulTree
 
-### set the directory, where you wish to store the outputs
+set the directory, where you wish to store the outputs
 ```{r, eval = F}
 setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/surv_no_shorebirds")
 
@@ -331,7 +331,7 @@ autocorr(model1_no$VCV)
 ```
 ### Run the best model with phylogeny using mulTree
 
-### set the directory, where you wish to store the outputs
+set the directory, where you wish to store the outputs
 ```{r, eval = F}
 setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/bmr_with_shorebirds")
 
@@ -425,7 +425,7 @@ autocorr(model1_no$VCV)
 ```
 ### Run the best model with phylogeny using mulTree
 
-### set the directory, where you wish to store the outputs
+set the directory, where you wish to store the outputs
 ```{r, eval = F}
 setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/bmr_no_shorebirds")
 
@@ -445,12 +445,10 @@ mulTree.parameters<-c(5000000, 5000, 100000)
 bmr_n_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "bmr_n_shore", chains=8, parallel='SOCK')
 ```
 
-
-
 ## EXTRACT mulTree OUTPUT 
-### we here use Model 1 with shorebirds as an example
+### we use Model 1 with shorebirds as an example
 
-### it is very likely that you will have to do it in a new R window. Therefore, again:
+it is very likely that you will have to do it in a new R window. Therefore, again:
 ### load the packages
 ```{r, eval = F}
 library(snow)
@@ -461,9 +459,9 @@ library(mulTree)
 setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/surv_with_shorebirds")
 ```
 
-## Look if all the chains have converged
+### Look if all the chains have converged
 
-### this function gets convergence parameters from 'conv' files, automatically saved in the same directory as model outputs
+this function gets convergence parameters from 'conv' files, automatically saved in the same directory as model outputs
 ```{r, eval = F}
 extract_conv<-function(model_name) {
   Files<-list.files( pattern=paste0(model_name,'.*_conv'))
@@ -485,17 +483,17 @@ conv_mother<-extract_conv('surv_w_shore')
 ```
 ## Collect mulTree outputs
 
-### you can first look at one of the models output, to see its structure
+you can first look at one of the models output, to see its structure
 ```{r, eval = F}
 load("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/bmr_no_shorebirds/bmr_n_shore-tree1_chain1.rda")
 summary(model)
 ```
-# # # we need p-values (pMCMC) for the fixed parameters: 
-# # #pMCMC_cycle: intercept between the transitory (baseline) and full cycle (cyclenr_char1)
-# # #pMCMC_surv_cycle_0: slope for the transitory cycle
-# # #pMCMC_surv_cycle_1: slope for the full cycle
+we need p-values (pMCMC) for the fixed parameters: 
+pMCMC_cycle: intercept between the transitory (baseline) and full cycle (cyclenr_char1)
+pMCMC_surv_cycle_0: slope for the transitory cycle
+pMCMC_surv_cycle_1: slope for the full cycle
 
-### function to extract pMCMC
+### function extracting pMCMC
 ```{r, eval = F}
 extract_pMCMC<-function(model_name) {
   Files<-list.files( pattern=paste0(model_name,'.*_chain'))
@@ -522,7 +520,7 @@ summary(pMCMC$pMCMC_cycle)
 summary(pMCMC$pMCMC_slope_cycle_0)
 summary(pMCMC$pMCMC_slope_cycle_1)
 ```
-### function for extracting fixed effects
+### function extracting fixed effects
 ```{r, eval = F}
 extract_fixed<-function(model_name) {
   Files<-list.files( pattern=paste0(model_name,'.*_chain'))
@@ -557,7 +555,7 @@ quantile(fixed_effects$slope_cycle_0,c(0.025,0.975))
 quantile(fixed_effects$slope_cycle_1,c(0.025,0.975))
 ```
 
-### function for extracting random effects
+### function extracting random effects
 ```{r, eval = F}
 extract_random<-function(model_name) {
   Files<-list.files( pattern=paste0(model_name,'.*_chain'))
