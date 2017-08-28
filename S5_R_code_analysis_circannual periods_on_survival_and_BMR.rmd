@@ -85,7 +85,7 @@ p.var<-var(Circannual_cycles_birds_data$res_dev_bmr,na.rm=TRUE)
 pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),G5=list(V = matrix(p.var/2), nu = 1)))#
 pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))#
 ```
-### run MCMCglmm without pedigree (phylogenetic variable)
+### Run MCMCglmm without pedigree (phylogenetic variable)
 ```{r, eval = F}
 model1<- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
 
@@ -176,7 +176,7 @@ p.var<-var(Circannual_cycles_birds_data$res_dev_bmr,na.rm=TRUE)
 pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),G5=list(V = matrix(p.var/2), nu = 1)))#
 pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))#
 ```
-### run MCMCglmm without pedigree (phylogenetic variable)
+### Run MCMCglmm without pedigree (phylogenetic variable)
 ```{r, eval = F}
 model1_no<- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
 
@@ -271,7 +271,7 @@ p.var<-var(Circannual_cycles_birds_data$devbysurv,na.rm=TRUE)
 pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),G5=list(V = matrix(p.var/2), nu = 1)))#
 pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))#
 ```
-### run MCMCglmm without phylogeny
+### Run MCMCglmm without phylogeny
 ```{r, eval = F}
 model1_bmr<- MCMCglmm(devbysurv~bmrbysurv:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
 
@@ -366,7 +366,7 @@ p.var<-var(Circannual_cycles_birds_data$devbysurv,na.rm=TRUE)
 pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),G5=list(V = matrix(p.var/2), nu = 1)))#
 pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))#
 ```
-### run MCMCglmm without phylogeny
+### Run MCMCglmm without phylogeny
 ```{r, eval = F}
 model1_bmr<- MCMCglmm(devbysurv~bmrbysurv:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
 model2_bmr<- MCMCglmm(devbysurv~bmrbysurv+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
