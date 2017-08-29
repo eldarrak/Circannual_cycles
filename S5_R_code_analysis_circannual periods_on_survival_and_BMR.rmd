@@ -9,7 +9,15 @@ We ran both MCMCglmm models using the reviewed data on 14 passerine species and 
 
 Then we extended each glmmMCMC model by incorporating phylogenetic variance in it, using the package mulTree. From the output, we calculated phylogenetic signal and an analogue of Pagel lambda.
 
-
+Install required packages
+```{r, eval = F}
+install.packages('snow')
+if(!require(devtools)) install.packages("devtools")
+library(devtools)
+install_github("TGuillerme/mulTree", ref = "release")
+#you might need to install some packages manually
+#install.packages(c("MCMCglmm", "coda", "hdrcde", "snow", "ape", "corpcor", "curl"))
+```
 Load required packages
 ```{r, eval = F}
 library(snow)
@@ -57,13 +65,13 @@ Circannual_cycles_birds_data$bmr[i]<-unique(bmr_sp_median[bmr_sp_median$Group.1=
 ```
 load table "Body_mass_birds_data" with species-specific body masses
 ```{r, eval = F}
-load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\bodymass.RData")
+Body_mass_birds_data<-read.csv('https://git.io/v5Z9m',stringsAsFactors=F)
 ```
 add body mass values to the main table
 ```{r, eval = F}
 Circannual_cycles_birds_data$bodymass<-NA
 for(i in 1:nrow(Circannual_cycles_birds_data)){
-Circannual_cycles_birds_data$bodymass[i]<-unique(Body_mass_birds_data[Body_mass_birds_data$Species==Circannual_cycles_birds_data$Species[i],]$bodymass)
+Circannual_cycles_birds_data$bodymass[i]<-unique(Body_mass_birds_data[Body_mass_birds_data$species==Circannual_cycles_birds_data$species[i],]$bodymass)
 }
 ```
 Get residuals of survival on BMR
