@@ -12,6 +12,7 @@ Then we extended each glmmMCMC model by incorporating phylogenetic variance in i
 Install required packages
 
 ```{r, eval = F}
+
 install.packages('snow')
 if(!require(devtools)) install.packages("devtools")
 library(devtools)
@@ -20,11 +21,13 @@ install_github("TGuillerme/mulTree", ref = "release")
 you might need to install some packages manually
 
 ```{r, eval = F}
+
 install.packages(c("MCMCglmm", "coda", "hdrcde", "snow", "ape", "corpcor", "curl"))
 ```
 Load required packages
 
 ```{r, eval = F}
+
 library(snow)
 library(mulTree)
 ```
@@ -37,25 +40,30 @@ Download data from GitHub
 load table with circannual cycles and deviations of circannual period from 365 days (main table "Circannual_cycles_birds_data")
 
 ```{r, eval = F}
+
 Circannual_cycles_birds_data<-read.csv('https://git.io/v5GIF',stringsAsFactors=F)
 ```
 create unique ID 
 
 ```{r, eval = F}
+
 Circannual_cycles_birds_data$uniqueid<-paste(Circannual_cycles_birds_data$species,Circannual_cycles_birds_data$Reference,Circannual_cycles_birds_data$BirdID_char,sep="_")
 ```
 make cycle number character
+
 ```{r, eval = F}
 
 Circannual_cycles_birds_data$cyclenr_char<-as.character(Circannual_cycles_birds_data$cyclenr_char)
 ```
 load table "Survival_birds_data" with species-specific survival and calculate median per species
+
 ```{r, eval = F}
 
 Survival_birds_data<-read.csv('https://git.io/v5Gtq',stringsAsFactors=F)
 surv_sp<-aggregate(Survival_birds_data$survival,by=list(Survival_birds_data$species),median)
 ```
 add survival values to the main table
+
 ```{r, eval = F}
 
 Circannual_cycles_birds_data$surv<-NA
@@ -64,6 +72,7 @@ Circannual_cycles_birds_data$surv[i]<-unique(surv_sp[surv_sp$Group.1 %in% Circan
 }
 ```
 load table "BMR_birds_data.csv" with species-specific BMR  and calculate median per species
+
 ```{r, eval = F}
 
 BMR_birds_data<-read.csv('https://git.io/v5ZSb',stringsAsFactors=F)
@@ -80,11 +89,13 @@ Circannual_cycles_birds_data$bmr[i]<-unique(bmr_sp_median[bmr_sp_median$Group.1=
 load table "Body_mass_birds_data" with species-specific body masses
 
 ```{r, eval = F}
+
 Body_mass_birds_data<-read.csv('https://git.io/v5Z9m',stringsAsFactors=F)
 ```
 add body mass values to the main table
 
 ```{r, eval = F}
+
 Circannual_cycles_birds_data$bodymass<-NA
 for(i in 1:nrow(Circannual_cycles_birds_data)){
 Circannual_cycles_birds_data$bodymass[i]<-unique(Body_mass_birds_data[Body_mass_birds_data$species==Circannual_cycles_birds_data$species[i],]$bodymass)
@@ -93,11 +104,13 @@ Circannual_cycles_birds_data$bodymass[i]<-unique(Body_mass_birds_data[Body_mass_
 Get residuals of survival on BMR
 
 ```{r, eval = F}
+
 Circannual_cycles_birds_data$resbmr<-residuals(lm(log(surv)~log(bmr),data=Circannual_cycles_birds_data))
 ```
 Residuals of deviation of circannual period from 365 days on BMR
 
 ```{r, eval = F}
+
 Circannual_cycles_birds_data$res_dev_bmr<-residuals(lm(deviation~log(bmr),data=Circannual_cycles_birds_data))
 ```
 
