@@ -17,14 +17,14 @@ install.packages('snow')
 if(!require(devtools)) install.packages("devtools")
 library(devtools)
 install_github("TGuillerme/mulTree", ref = "release")
-
 ```
+
 you might need to install some packages manually
+
 
 ```{r, eval = F}
 
 install.packages(c("MCMCglmm", "coda", "hdrcde", "snow", "ape", "corpcor", "curl"))
-
 ```
 Load required packages
 
@@ -34,6 +34,7 @@ library(snow)
 library(mulTree)
 
 ```
+
 Because running the four models (Model 1 and Model 2, each with and without shorebirds) takes a long time, you might want to tackle them in separate R windows. Doing so, run thee code below ("PREPARE DATA") before each model.
 
 ## PREPARE THE DATA 
