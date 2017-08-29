@@ -17,8 +17,11 @@ install.packages('snow')
 if(!require(devtools)) install.packages("devtools")
 library(devtools)
 install_github("TGuillerme/mulTree", ref = "release")
-#you might need to install some packages manually
-#install.packages(c("MCMCglmm", "coda", "hdrcde", "snow", "ape", "corpcor", "curl"))
+```
+you might need to install some packages manually
+
+```{r, eval = F}
+install.packages(c("MCMCglmm", "coda", "hdrcde", "snow", "ape", "corpcor", "curl"))
 ```
 Load required packages
 
