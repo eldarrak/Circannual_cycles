@@ -159,13 +159,12 @@ autocorr(model1$VCV)
 ### Run the best model with phylogeny using mulTree
 
 set the directory, where you wish to store the outputs
+
+load phylogenetic trees (containing shorebirds), directly from http://birdtree.org/ or just download the 100 trees used in the presented analysis from https://git.io/v5ZxG :
 ```{r, eval = F}
-setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/surv_with_shorebirds")
-#load phylogenetic trees (containing shorebirds) from https://git.io/v5ZxG (the 100 trees used in the presented analysis) or directly from http://birdtree.org/
-
-load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\with_shorebirds_tree_subset.RData")
+download.file("https://raw.githubusercontent.com/eldarrak/FLightR/master/examples/Black-Tailed_Godwit_JAB_example/A2_raw_data.lux", "A2_raw_data.lux")
 tr_full<-with_shorebirds_tree_subset
-
+```
 # set the model structure and parameters
 mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
 formula_fintest<-res_dev_bmr~resbmr:cyclenr_char+cyclenr_char
