@@ -27,10 +27,8 @@ Because running the four models (Model 1 and Model 2, each with and without shor
 
 ## PREPARE THE DATA 
 
-download data from GitHub
-```{r, eval = F}
-##PROVIDE LINK
-```
+Download data from GitHub
+
 load table with circannual cycles and deviations of circannual period from 365 days (main table "Circannual_cycles_birds_data")
 ```{r, eval = F}
 Circannual_cycles_birds_data<-read.csv('https://git.io/v5GIF',stringsAsFactors=F)
