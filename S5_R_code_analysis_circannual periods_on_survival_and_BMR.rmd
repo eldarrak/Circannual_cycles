@@ -168,7 +168,7 @@ load("with_shorebirds_tree_subset.RData")
 tr_full<-with_shorebirds_tree_subset
 ```
 # set the model structure and parameters
-mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
+mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data, tree = tr_full,    taxa = "animal", rand.term=~uniqueid+Trait+Reference+animal+species)
 formula_fintest<-res_dev_bmr~resbmr:cyclenr_char+cyclenr_char
 mulTree.parameters<-c(5000000, 5000, 100000)
 
