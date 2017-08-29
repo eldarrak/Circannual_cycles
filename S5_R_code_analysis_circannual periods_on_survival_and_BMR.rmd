@@ -160,9 +160,10 @@ autocorr(model1$VCV)
 
 set the directory, where you wish to store the outputs
 
-load phylogenetic trees (containing shorebirds), directly from http://birdtree.org/ or just download the 100 trees used in the presented analysis from https://git.io/v5ZxG :
+download phylogenetic trees (containing shorebirds), directly from http://birdtree.org/ or just download the 100 trees used in the presented analysis from https://git.io/v5ZxG :
 ```{r, eval = F}
-download.file("https://raw.githubusercontent.com/eldarrak/FLightR/master/examples/Black-Tailed_Godwit_JAB_example/A2_raw_data.lux", "A2_raw_data.lux")
+download.file("https://git.io/v5ZxG", "with_shorebirds_tree_subset.RData")
+#load the phylogenetic trees subset
 tr_full<-with_shorebirds_tree_subset
 ```
 # set the model structure and parameters
@@ -200,7 +201,7 @@ model2_no$DIC
 # the best model
 
 summary(model1_no)
-
+```
 
 # # # Iterations = 30001:1299951
  # # # Thinning interval  = 50
@@ -243,21 +244,21 @@ summary(model1_no)
 # # # ---
 # # # Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
-# control for autocorrelation
-
+control for autocorrelation
+```{r, eval = F}
 autocorr(model1_no$VCV)
 ```
 ### Run the best model with phylogeny using mulTree
 
 set the directory, where you wish to store the outputs
+
+Download phylogenetic trees not containing shorebirds, from http://birdtree.org/ or get the subset we used in the manuscript
 ```{r, eval = F}
-setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/surv_no_shorebirds")
+download.file(https://git.io/v5Zxe", "all_birds_tree_subset.RData")
+#load the phylogenetic trees subset
 
-#load phylogenetic trees not containing shorebirds
-
-load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\all_birds_tree_subset.RData")
 tr_full<-all_birds_tree_subset
-
+```
 # set the model structure and parameters
 
 mulTree_data <- as.mulTree(data = Circannual_cycles_no_shorebirds, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
@@ -344,14 +345,13 @@ autocorr(model1_no$VCV)
 ### Run the best model with phylogeny using mulTree
 
 set the directory, where you wish to store the outputs
+
+download phylogenetic trees (containing shorebirds), directly from http://birdtree.org/ or just download the 100 trees used in the presented analysis from https://git.io/v5ZxG :
 ```{r, eval = F}
-setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/bmr_with_shorebirds")
-
-###load phylogenetic trees containing shorebirds
-
-load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\with_shorebirds_tree_subset.RData")
+download.file("https://git.io/v5ZxG", "with_shorebirds_tree_subset.RData")
+#load the phylogenetic trees subset
 tr_full<-with_shorebirds_tree_subset
-
+```
 ### set the model structure and parameters
 mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
 formula_fintest<-devbysurv~bmrbysurv:cyclenr_char+cyclenr_char
@@ -438,22 +438,23 @@ autocorr(model1_no$VCV)
 ### Run the best model with phylogeny using mulTree
 
 set the directory, where you wish to store the outputs
+
+Download phylogenetic trees not containing shorebirds, from http://birdtree.org/ or get the subset we used in the manuscript
 ```{r, eval = F}
-setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/bmr_no_shorebirds")
+download.file(https://git.io/v5Zxe", "all_birds_tree_subset.RData")
+#load the phylogenetic trees subset
 
-# load phylogenetic trees without shorebirds
-
-load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\all_birds_tree_subset.RData")
 tr_full<-all_birds_tree_subset
+```
 
 # set the model structure and parameters
-
+```{r, eval = F}
 mulTree_data <- as.mulTree(data = Circannual_cycles_no_shorebirds, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
 formula_fintest<-devbysurv~bmrbysurv:cyclenr_char+cyclenr_char
 mulTree.parameters<-c(5000000, 5000, 100000)
-
+```
 # run mulTree
-
+```{r, eval = F}
 bmr_n_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "bmr_n_shore", chains=8, parallel='SOCK')
 ```
 
