@@ -30,39 +30,40 @@
 29,Passer domesticus,0.55,Siriwardena et al. 1999,
 30,Passer domesticus,0.582,Siriwardena et al 1998,stable CBC trend
 31,Passer domesticus,0.5,Siriwardena et al 1998,decreasing CBC trend
-32,Phylloscopus collybita,0.4,Johnston et al. 2016,France
-33,Phylloscopus collybita,0.28,Johnston et al. 2016,Netherlands
-34,Phylloscopus collybita,0.27,Johnston et al. 2016,UK South
-35,Phylloscopus collybita,0.27,Johnston et al. 2016,UK North
-36,Phylloscopus collybita,0.189,Siriwardena et al 1998,increasing CBC trend
-37,Phylloscopus collybita,0.375,Siriwardena et al 1998,stable CBC trend
-38,Phylloscopus collybita,0.335,Siriwardena et al 1998,decreasing CBC trend
-39,Phylloscopus trochilus,0.46,Morrison et al 2016,northwest
-40,Phylloscopus trochilus,0.43,Morrison et al 2016,southeast
-41,Phylloscopus trochilus,0.3,Silverin et al. 1997,"southern Sweden, apparent survival, no survival analysis"
-42,Phylloscopus trochilus,0.27,Silverin et al. 1997,"northern Sweden, apparent survival, no survival analysis"
-43,Phylloscopus trochilus,0.46,Johnston et al. 2016,France
-44,Phylloscopus trochilus,0.36,Johnston et al. 2016,Netherlands
-45,Phylloscopus trochilus,0.32,Johnston et al. 2016,UK South
-46,Phylloscopus trochilus,0.34,Johnston et al. 2016,UK North
-47,Phylloscopus trochilus,0.326,Siriwardena et al 1998,increasing CBC trend
-48,Phylloscopus trochilus,0.271,Siriwardena et al 1998,stable CBC trend
-49,Phylloscopus trochilus,0.339,Siriwardena et al 1998,decreasing CBC trend
-50,Saxicola torquata rubicola,0.48,Mueller et al 2005,
-51,Sturnus vulgaris,0.75,Freeman et al 2007,
-52,Sturnus vulgaris,0.69,Siriwardena et al 1998,stable CBC trend
-53,Sturnus vulgaris,0.806,Siriwardena et al 1998,decreasing CBC trend
-54,Sturnus vulgaris,0.47,Moeller 2008,
-55,Sylvia atricapilla,0.48,Johnston et al. 2016,Catalonia
-56,Sylvia atricapilla,0.48,Johnston et al. 2016,France
-57,Sylvia atricapilla,0.37,Johnston et al. 2016,Netherlands
-58,Sylvia atricapilla,0.29,Johnston et al. 2016,UK South
-59,Sylvia atricapilla,0.33,Johnston et al. 2016,UK North
-60,Sylvia atricapilla,0.44,Siriwardena et al 1998,increasing CBC trend
-61,Sylvia atricapilla,0.411,Siriwardena et al 1998,stable CBC trend
-62,Sylvia borin,0.2,Johnston et al. 2016,Catalonia
-63,Sylvia borin,0.49,Johnston et al. 2016,France
-64,Sylvia borin,0.45,Johnston et al. 2016,Netherlands
-65,Sylvia borin,0.46,Johnston et al. 2016,UK South
-66,Sylvia borin,0.42,Johnston et al. 2016,UK North
-67,Sylvia borin,0.5,Siriwardena et al 1998,
+32,Passer montanus,0.439,Downing et al. 2015,
+33,Phylloscopus collybita,0.4,Johnston et al. 2016,France
+34,Phylloscopus collybita,0.28,Johnston et al. 2016,Netherlands
+35,Phylloscopus collybita,0.27,Johnston et al. 2016,UK South
+36,Phylloscopus collybita,0.27,Johnston et al. 2016,UK North
+37,Phylloscopus collybita,0.189,Siriwardena et al 1998,increasing CBC trend
+38,Phylloscopus collybita,0.375,Siriwardena et al 1998,stable CBC trend
+39,Phylloscopus collybita,0.335,Siriwardena et al 1998,decreasing CBC trend
+40,Phylloscopus trochilus,0.46,Morrison et al 2016,northwest
+41,Phylloscopus trochilus,0.43,Morrison et al 2016,southeast
+42,Phylloscopus trochilus,0.3,Silverin et al. 1997,"southern Sweden, apparent survival, no survival analysis"
+43,Phylloscopus trochilus,0.27,Silverin et al. 1997,"northern Sweden, apparent survival, no survival analysis"
+44,Phylloscopus trochilus,0.46,Johnston et al. 2016,France
+45,Phylloscopus trochilus,0.36,Johnston et al. 2016,Netherlands
+46,Phylloscopus trochilus,0.32,Johnston et al. 2016,UK South
+47,Phylloscopus trochilus,0.34,Johnston et al. 2016,UK North
+48,Phylloscopus trochilus,0.326,Siriwardena et al 1998,increasing CBC trend
+49,Phylloscopus trochilus,0.271,Siriwardena et al 1998,stable CBC trend
+50,Phylloscopus trochilus,0.339,Siriwardena et al 1998,decreasing CBC trend
+51,Saxicola torquata rubicola,0.48,Mueller et al 2005,
+52,Sturnus vulgaris,0.75,Freeman et al 2007,
+53,Sturnus vulgaris,0.69,Siriwardena et al 1998,stable CBC trend
+54,Sturnus vulgaris,0.806,Siriwardena et al 1998,decreasing CBC trend
+55,Sturnus vulgaris,0.47,Moeller 2008,
+56,Sylvia atricapilla,0.48,Johnston et al. 2016,Catalonia
+57,Sylvia atricapilla,0.48,Johnston et al. 2016,France
+58,Sylvia atricapilla,0.37,Johnston et al. 2016,Netherlands
+59,Sylvia atricapilla,0.29,Johnston et al. 2016,UK South
+60,Sylvia atricapilla,0.33,Johnston et al. 2016,UK North
+61,Sylvia atricapilla,0.44,Siriwardena et al 1998,increasing CBC trend
+62,Sylvia atricapilla,0.411,Siriwardena et al 1998,stable CBC trend
+63,Sylvia borin,0.2,Johnston et al. 2016,Catalonia
+64,Sylvia borin,0.49,Johnston et al. 2016,France
+65,Sylvia borin,0.45,Johnston et al. 2016,Netherlands
+66,Sylvia borin,0.46,Johnston et al. 2016,UK South
+67,Sylvia borin,0.42,Johnston et al. 2016,UK North
+68,Sylvia borin,0.5,Siriwardena et al 1998,
