@@ -162,8 +162,9 @@ set the directory, where you wish to store the outputs
 
 download phylogenetic trees (containing shorebirds), directly from http://birdtree.org/ or just download the 100 trees used in the presented analysis from https://git.io/v5ZxG :
 ```{r, eval = F}
-download.file("https://git.io/v5ZxG", "with_shorebirds_tree_subset.RData")
+download.file("https://git.io/v5ZxG", "with_shorebirds_tree_subset.RData",mode="wb")
 #load the phylogenetic trees subset
+load("with_shorebirds_tree_subset.RData")
 tr_full<-with_shorebirds_tree_subset
 ```
 # set the model structure and parameters
@@ -254,9 +255,9 @@ set the directory, where you wish to store the outputs
 
 Download phylogenetic trees not containing shorebirds, from http://birdtree.org/ or get the subset we used in the manuscript
 ```{r, eval = F}
-download.file(https://git.io/v5Zxe", "all_birds_tree_subset.RData")
+download.file("https://git.io/v5Zxe", "all_birds_tree_subset.RData",mode="wb")
 #load the phylogenetic trees subset
-
+load("all_birds_tree_subset.RData")
 tr_full<-all_birds_tree_subset
 ```
 # set the model structure and parameters
@@ -348,8 +349,9 @@ set the directory, where you wish to store the outputs
 
 download phylogenetic trees (containing shorebirds), directly from http://birdtree.org/ or just download the 100 trees used in the presented analysis from https://git.io/v5ZxG :
 ```{r, eval = F}
-download.file("https://git.io/v5ZxG", "with_shorebirds_tree_subset.RData")
+download.file("https://git.io/v5ZxG", "with_shorebirds_tree_subset.RData",mode="wb")
 #load the phylogenetic trees subset
+load("with_shorebirds_tree_subset.RData")
 tr_full<-with_shorebirds_tree_subset
 ```
 ### set the model structure and parameters
@@ -441,9 +443,9 @@ set the directory, where you wish to store the outputs
 
 Download phylogenetic trees not containing shorebirds, from http://birdtree.org/ or get the subset we used in the manuscript
 ```{r, eval = F}
-download.file(https://git.io/v5Zxe", "all_birds_tree_subset.RData")
+download.file("https://git.io/v5Zxe", "all_birds_tree_subset.RData",mode="wb")
 #load the phylogenetic trees subset
-
+load("all_birds_tree_subset.RData")
 tr_full<-all_birds_tree_subset
 ```
 
