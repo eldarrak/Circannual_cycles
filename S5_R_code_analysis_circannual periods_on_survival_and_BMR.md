@@ -138,11 +138,15 @@ model2<- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,random= ~uniqueid+Trait+Refere
 
 model1$DIC
 model2$DIC
+```
+The best model
 
-### The best model
+```{r, eval = F}
+
 summary(model1)
 ```
-# control for autocorrelation
+control for autocorrelation
+
 ```{r, eval = F}
 
 autocorr(model1$VCV)
@@ -203,8 +207,11 @@ model2_no<- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,random= ~uniqueid+Trait+Ref
 
 model1_no$DIC
 model2_no$DIC
+```
+the best model
 
-# the best model
+```{r, eval = F}
+
 summary(model1_no)
 ```
 control for autocorrelation
@@ -270,12 +277,15 @@ model2_bmr<- MCMCglmm(devbysurv~bmrbysurv+cyclenr_char,random= ~uniqueid+Trait+R
 
 model1_bmr$DIC
 model2_bmr$DIC
+```
 
-#the best model
+the best model
+
+```{r, eval = F}
 
 summary(model1_bmr)
  ```
-# control for autocorrelation
+control for autocorrelation
 
 ```{r, eval = F}
 
@@ -341,12 +351,15 @@ model2_bmr<- MCMCglmm(devbysurv~bmrbysurv+cyclenr_char,random= ~uniqueid+Trait+R
 
 model1_bmr$DIC
 model2_bmr$DIC
+```
 
-# the best model
+the best model
+
+```{r, eval = F}
 
 summary(model1_bmr)
 ```
-### control for autocorrelation
+control for autocorrelation
 
 ```{r, eval = F}
 
