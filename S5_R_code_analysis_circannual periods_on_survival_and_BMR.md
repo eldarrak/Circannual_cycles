@@ -10,7 +10,9 @@ We ran both MCMCglmm models using the reviewed data on 14 passerine species and 
 Then we extended each glmmMCMC model by incorporating phylogenetic variance in it, using the package mulTree. From the output, we calculated phylogenetic signal and an analogue of Pagel lambda.
 
 Install required packages
+
 ```{r, eval = F}
+
 install.packages('snow')
 if(!require(devtools)) install.packages("devtools")
 library(devtools)
@@ -19,7 +21,9 @@ install_github("TGuillerme/mulTree", ref = "release")
 #install.packages(c("MCMCglmm", "coda", "hdrcde", "snow", "ape", "corpcor", "curl"))
 ```
 Load required packages
+
 ```{r, eval = F}
+
 library(snow)
 library(mulTree)
 ```
@@ -30,19 +34,27 @@ Because running the four models (Model 1 and Model 2, each with and without shor
 Download data from GitHub
 
 load table with circannual cycles and deviations of circannual period from 365 days (main table "Circannual_cycles_birds_data")
+
 ```{r, eval = F}
+
 Circannual_cycles_birds_data<-read.csv('https://git.io/v5GIF',stringsAsFactors=F)
 ```
 create unique ID 
+
 ```{r, eval = F}
+
 Circannual_cycles_birds_data$uniqueid<-paste(Circannual_cycles_birds_data$species,Circannual_cycles_birds_data$Reference,Circannual_cycles_birds_data$BirdID_char,sep="_")
 ```
 make cycle number character
+
 ```{r, eval = F}
+
 Circannual_cycles_birds_data$cyclenr_char<-as.character(Circannual_cycles_birds_data$cyclenr_char)
 ```
 load table "Survival_birds_data" with species-specific survival and calculate median per species
+
 ```{r, eval = F}
+
 Survival_birds_data<-read.csv('https://git.io/v5Gtq',stringsAsFactors=F)
 surv_sp<-aggregate(Survival_birds_data$survival,by=list(Survival_birds_data$species),median)
 ```
