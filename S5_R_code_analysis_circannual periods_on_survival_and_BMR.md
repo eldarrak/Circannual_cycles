@@ -51,7 +51,8 @@ create unique ID
 
 ```{r, eval = F}
 
-Circannual_cycles_birds_data$uniqueid<-paste(Circannual_cycles_birds_data$species,Circannual_cycles_birds_data$Reference,
+Circannual_cycles_birds_data$uniqueid<-paste(Circannual_cycles_birds_data$species,
+     Circannual_cycles_birds_data$Reference,
      Circannual_cycles_birds_data$BirdID_char,sep="_")
 
 ```
