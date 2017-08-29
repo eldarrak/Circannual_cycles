@@ -37,6 +37,10 @@ create unique ID
 ```{r, eval = F}
 Circannual_cycles_birds_data$uniqueid<-paste(Circannual_cycles_birds_data$species,Circannual_cycles_birds_data$Reference,Circannual_cycles_birds_data$BirdID_char,sep="_")
 ```
+make cycle number character
+```{r, eval = F}
+Circannual_cycles_birds_data$cyclenr_char<-as.character(Circannual_cycles_birds_data$cyclenr_char)
+```
 load table "Survival_birds_data" with species-specific survival and calculate median per species
 ```{r, eval = F}
 Survival_birds_data<-read.csv('https://git.io/v5Gtq',stringsAsFactors=F)
