@@ -108,8 +108,9 @@ model2$DIC
 
 ### The best model
 summary(model1)
-
+```
 # control for autocorrelation
+```{r, eval = F}
 
 autocorr(model1$VCV)
 ```
