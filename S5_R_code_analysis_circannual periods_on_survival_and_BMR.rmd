@@ -125,13 +125,13 @@ download.file("https://git.io/v5ZxG", "with_shorebirds_tree_subset.RData",mode="
 load("with_shorebirds_tree_subset.RData")
 tr_full<-with_shorebirds_tree_subset
 ```
-# set the model structure and parameters
+### set the model structure and parameters
 ```{r, eval = F}
 mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data, tree = tr_full,    taxa = "animal", rand.term=~uniqueid+Trait+Reference+animal+species)
 formula_fintest<-res_dev_bmr~resbmr:cyclenr_char+cyclenr_char
 mulTree.parameters<-c(5000000, 5000, 100000)
 ```
-# run mulTree
+### run mulTree
 ```{r, eval = F}
 surv_w_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "surv_w_shore", chains=8, parallel='SOCK')
 ```
@@ -176,13 +176,13 @@ download.file("https://git.io/v5Zxe", "all_birds_tree_subset.RData",mode="wb")
 load("all_birds_tree_subset.RData")
 tr_full<-all_birds_tree_subset
 ```
-# set the model structure and parameters
+### set the model structure and parameters
 ```{r, eval = F}
 mulTree_data <- as.mulTree(data = Circannual_cycles_no_shorebirds, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
 formula_fintest<-res_dev_bmr~resbmr:cyclenr_char+cyclenr_char
 mulTree.parameters<-c(5000000, 5000, 100000)
 ```
-# run mulTree
+### run mulTree
 ```{r, eval = F}
 surv_n_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "surv_n_shore", chains=8, parallel='SOCK')
 ```
@@ -236,7 +236,7 @@ mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data, tree = tr_full, 
 formula_fintest<-devbysurv~bmrbysurv:cyclenr_char+cyclenr_char
 mulTree.parameters<-c(5000000, 5000, 100000)
 ```
-# run mulTree
+### run mulTree
 ```{r, eval = F}
 bmr_w_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "bmr_w_shore", chains=8, parallel='SOCK')
 ```
@@ -270,7 +270,7 @@ model2_bmr$DIC
 
 summary(model1_bmr)
 ```
-# control for autocorrelation
+### control for autocorrelation
 ```{r, eval = F}
 autocorr(model1_no$VCV)
 ```
@@ -286,13 +286,13 @@ load("all_birds_tree_subset.RData")
 tr_full<-all_birds_tree_subset
 ```
 
-# set the model structure and parameters
+### set the model structure and parameters
 ```{r, eval = F}
 mulTree_data <- as.mulTree(data = Circannual_cycles_no_shorebirds, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
 formula_fintest<-devbysurv~bmrbysurv:cyclenr_char+cyclenr_char
 mulTree.parameters<-c(5000000, 5000, 100000)
 ```
-# run mulTree
+### run mulTree
 ```{r, eval = F}
 bmr_n_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "bmr_n_shore", chains=8, parallel='SOCK')
 ```
