@@ -161,7 +161,8 @@ autocorr(model1$VCV)
 set the directory, where you wish to store the outputs
 ```{r, eval = F}
 setwd("C:/Users/meeT55/Desktop/Julia/analysis_with_bmr/LOG-transformed/after_Martin/surv_with_shorebirds")
-#load phylogenetic trees (including shorebirds)
+#load phylogenetic trees (containing shorebirds) from https://git.io/v5ZxG (the 100 trees used in the presented analysis) or directly from http://birdtree.org/
+
 load("C:\\Users\\meeT55\\Desktop\\Julia\\data\\with_shorebirds_tree_subset.RData")
 tr_full<-with_shorebirds_tree_subset
 
