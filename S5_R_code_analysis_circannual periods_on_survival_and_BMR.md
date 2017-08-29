@@ -51,7 +51,8 @@ create unique ID
 
 ```{r, eval = F}
 
-Circannual_cycles_birds_data$uniqueid<-paste(Circannual_cycles_birds_data$species,Circannual_cycles_birds_data$Reference,Circannual_cycles_birds_data$BirdID_char,sep="_")
+Circannual_cycles_birds_data$uniqueid<-paste(Circannual_cycles_birds_data$species,Circannual_cycles_birds_data$Reference,
+Circannual_cycles_birds_data$BirdID_char,sep="_")
 
 ```
 make cycle number character
@@ -75,7 +76,8 @@ add survival values to the main table
 
 Circannual_cycles_birds_data$surv<-NA
 for(i in 1:nrow(Circannual_cycles_birds_data)){
-Circannual_cycles_birds_data$surv[i]<-unique(surv_sp[surv_sp$Group.1 %in% Circannual_cycles_birds_data$species[i],]$x)
+Circannual_cycles_birds_data$surv[i]<-
+unique(surv_sp[surv_sp$Group.1 %in% Circannual_cycles_birds_data$species[i],]$x)
 }
 
 ```
@@ -92,7 +94,8 @@ add BMR values to the main table
 ```{r, eval = F}
 Circannual_cycles_birds_data$bmr<-NA
 for(i in 1:nrow(Circannual_cycles_birds_data)){
-Circannual_cycles_birds_data$bmr[i]<-unique(bmr_sp_median[bmr_sp_median$Group.1==Circannual_cycles_birds_data$species[i],]$x)
+Circannual_cycles_birds_data$bmr[i]<-
+unique(bmr_sp_median[bmr_sp_median$Group.1==Circannual_cycles_birds_data$species[i],]$x)
 }
 
 ```
@@ -109,7 +112,8 @@ add body mass values to the main table
 
 Circannual_cycles_birds_data$bodymass<-NA
 for(i in 1:nrow(Circannual_cycles_birds_data)){
-Circannual_cycles_birds_data$bodymass[i]<-unique(Body_mass_birds_data[Body_mass_birds_data$species==Circannual_cycles_birds_data$species[i],]$bodymass)
+Circannual_cycles_birds_data$bodymass[i]<-unique(Body_mass_birds_data[Body_mass_birds_data$species==
+Circannual_cycles_birds_data$species[i],]$bodymass)
 }
 
 ```
@@ -117,14 +121,16 @@ Get residuals of survival on BMR
 
 ```{r, eval = F}
 
-Circannual_cycles_birds_data$resbmr<-residuals(lm(log(surv)~log(bmr),data=Circannual_cycles_birds_data))
+Circannual_cycles_birds_data$resbmr<-
+residuals(lm(log(surv)~log(bmr),data=Circannual_cycles_birds_data))
 
 ```
 Residuals of deviation of circannual period from 365 days on BMR
 
 ```{r, eval = F}
 
-Circannual_cycles_birds_data$res_dev_bmr<-residuals(lm(deviation~log(bmr),data=Circannual_cycles_birds_data))
+Circannual_cycles_birds_data$res_dev_bmr<-
+residuals(lm(deviation~log(bmr),data=Circannual_cycles_birds_data))
 
 ```
 
@@ -139,17 +145,24 @@ Circannual_cycles_birds_data$res_dev_bmr<-residuals(lm(deviation~log(bmr),data=C
 ```{r, eval = F}
 
 p.var<-var(Circannual_cycles_birds_data$res_dev_bmr,na.rm=TRUE)
-pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),G5=list(V = matrix(p.var/2), nu = 1)))
-pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))
+pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), 
+G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), 
+G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),
+G5=list(V = matrix(p.var/2), nu = 1)))
+pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1),
+G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), 
+G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))
 
 ```
 ### Run MCMCglmm without pedigree (phylogenetic variable)
 
 ```{r, eval = F}
 
-model1<- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+model1<- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,
+random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
 
-model2<- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+model2<- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,
+random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
 
 model1$DIC
 model2$DIC
@@ -188,7 +201,9 @@ tr_full<-with_shorebirds_tree_subset
 
 ```{r, eval = F}
 
-mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data, tree = tr_full,    taxa = "animal", rand.term=~uniqueid+Trait+Reference+animal+species)
+mulTree_data <- 
+as.mulTree(data = Circannual_cycles_birds_data, tree = tr_full,
+taxa = "animal", rand.term=~uniqueid+Trait+Reference+animal+species)
 formula_fintest<-res_dev_bmr~resbmr:cyclenr_char+cyclenr_char
 mulTree.parameters<-c(5000000, 5000, 100000)
 
@@ -197,7 +212,10 @@ mulTree.parameters<-c(5000000, 5000, 100000)
 
 ```{r, eval = F}
 
-surv_w_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "surv_w_shore", chains=8, parallel='SOCK')
+surv_w_shore<-mulTree(mulTree.data = mulTree_data, 
+formula = formula_fintest, priors = pri5_1, pr=TRUE, 
+parameters = mulTree.parameters, output = "surv_w_shore",
+chains=8, parallel='SOCK')
 
 ```
 
@@ -208,7 +226,9 @@ surv_w_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, pr
 
 ```{r, eval = F}
 
-Circannual_cycles_no_shorebirds<-Circannual_cycles_birds_data[!(Circannual_cycles_birds_data$Species %in% c("Calidris canutus", "Calidris tenuirostris")),]
+Circannual_cycles_no_shorebirds<-
+Circannual_cycles_birds_data[!(Circannual_cycles_birds_data$Species %in% 
+c("Calidris canutus", "Calidris tenuirostris")),]
 
 ```
 ### set priors
@@ -216,17 +236,24 @@ Circannual_cycles_no_shorebirds<-Circannual_cycles_birds_data[!(Circannual_cycle
 ```{r, eval = F}
 
 p.var<-var(Circannual_cycles_birds_data$res_dev_bmr,na.rm=TRUE)
-pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),G5=list(V = matrix(p.var/2), nu = 1)))
-pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))
+pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), 
+G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), 
+G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),
+G5=list(V = matrix(p.var/2), nu = 1)))
+pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), 
+G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), 
+G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))
 
 ```
 ### Run MCMCglmm without pedigree (phylogenetic variable)
 
 ```{r, eval = F}
 
-model1_no<- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+model1_no<- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,
+random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
 
-model2_no<- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+model2_no<- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,
+random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
 
 model1_no$DIC
 model2_no$DIC
@@ -264,7 +291,7 @@ tr_full<-all_birds_tree_subset
 
 ```{r, eval = F}
 
-mulTree_data <- as.mulTree(data = Circannual_cycles_no_shorebirds, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
+mulTree_data <- as.mulTree(data = Circannual_cycles_no_shorebirds, tree = tr_full,taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
 formula_fintest<-res_dev_bmr~resbmr:cyclenr_char+cyclenr_char
 mulTree.parameters<-c(5000000, 5000, 100000)
 
@@ -273,7 +300,10 @@ mulTree.parameters<-c(5000000, 5000, 100000)
 
 ```{r, eval = F}
 
-surv_n_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "surv_n_shore", chains=8, parallel='SOCK')
+surv_n_shore<-mulTree(mulTree.data = mulTree_data, 
+formula = formula_fintest, priors = pri5_1, pr=TRUE, 
+parameters = mulTree.parameters, output = "surv_n_shore", 
+chains=8, parallel='SOCK')
 
 ```
 
@@ -285,8 +315,10 @@ surv_n_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, pr
 
 ```{r, eval = F}
 
-Circannual_cycles_birds_data$devbysurv<-residuals(lm(deviation~log(surv),data=Circannual_cycles_birds_data))
-Circannual_cycles_birds_data$bmrbysurv<-residuals(lm(log(bmr)~log(surv),data=Circannual_cycles_birds_data))
+Circannual_cycles_birds_data$devbysurv<-
+residuals(lm(deviation~log(surv),data=Circannual_cycles_birds_data))
+Circannual_cycles_birds_data$bmrbysurv<-
+residuals(lm(log(bmr)~log(surv),data=Circannual_cycles_birds_data))
 
 ```
 ### set priors
@@ -294,17 +326,24 @@ Circannual_cycles_birds_data$bmrbysurv<-residuals(lm(log(bmr)~log(surv),data=Cir
 ```{r, eval = F}
 
 p.var<-var(Circannual_cycles_birds_data$devbysurv,na.rm=TRUE)
-pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),G5=list(V = matrix(p.var/2), nu = 1)))
-pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))
+pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), 
+G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), 
+G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),
+G5=list(V = matrix(p.var/2), nu = 1)))
+pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), 
+G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), 
+G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))
 
 ```
 ### Run MCMCglmm without phylogeny
 
 ```{r, eval = F}
 
-model1_bmr<- MCMCglmm(devbysurv~bmrbysurv:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+model1_bmr<- MCMCglmm(devbysurv~bmrbysurv:cyclenr_char+cyclenr_char,
+random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
 
-model2_bmr<- MCMCglmm(devbysurv~bmrbysurv+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+model2_bmr<- MCMCglmm(devbysurv~bmrbysurv+cyclenr_char,
+random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
 
 model1_bmr$DIC
 model2_bmr$DIC
@@ -343,7 +382,8 @@ tr_full<-with_shorebirds_tree_subset
 
 ```{r, eval = F}
 
-mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
+mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data, 
+tree = tr_full,taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
 formula_fintest<-devbysurv~bmrbysurv:cyclenr_char+cyclenr_char
 mulTree.parameters<-c(5000000, 5000, 100000)
 
@@ -352,7 +392,10 @@ mulTree.parameters<-c(5000000, 5000, 100000)
 
 ```{r, eval = F}
 
-bmr_w_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "bmr_w_shore", chains=8, parallel='SOCK')
+bmr_w_shore<-mulTree(mulTree.data = mulTree_data, 
+formula = formula_fintest, priors = pri5_1, pr=TRUE,
+parameters = mulTree.parameters, output = "bmr_w_shore", 
+chains=8, parallel='SOCK')
 
 ```
 
@@ -362,15 +405,19 @@ bmr_w_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, pri
 
 ```{r, eval = F}
 
-Circannual_cycles_birds_data$bmrbysurv<-residuals(lm(log(bmr)~log(surv),data=Circannual_cycles_birds_data))
-Circannual_cycles_birds_data$devbysurv<-residuals(lm(deviation~log(surv),data=Circannual_cycles_birds_data))
+Circannual_cycles_birds_data$bmrbysurv<-
+residuals(lm(log(bmr)~log(surv),data=Circannual_cycles_birds_data))
+Circannual_cycles_birds_data$devbysurv<-
+residuals(lm(deviation~log(surv),data=Circannual_cycles_birds_data))
 
 ```
 ### exclude shorebirds from the data table
 
 ```{r, eval = F}
 
-Circannual_cycles_no_shorebirds<-Circannual_cycles_birds_data[!(Circannual_cycles_birds_data$Species %in% c("Calidris canutus", "Calidris tenuirostris")),]
+Circannual_cycles_no_shorebirds<-
+Circannual_cycles_birds_data[!(Circannual_cycles_birds_data$Species %in% 
+c("Calidris canutus", "Calidris tenuirostris")),]
 
 ```
 ### set priors
@@ -378,16 +425,22 @@ Circannual_cycles_no_shorebirds<-Circannual_cycles_birds_data[!(Circannual_cycle
 ```{r, eval = F}
 
 p.var<-var(Circannual_cycles_birds_data$devbysurv,na.rm=TRUE)
-pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),G5=list(V = matrix(p.var/2), nu = 1)))
-pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))
+pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), 
+G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1),
+G5=list(V = matrix(p.var/2), nu = 1)))
+pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), 
+G = list(G1 = list(V = matrix(p.var/2), nu = 1),G2 = list(V = matrix(p.var/2), nu = 1), 
+G3=list(V = matrix(p.var/2), nu = 1), G4=list(V = matrix(p.var/2), nu = 1)))
 
 ```
 ### Run MCMCglmm without phylogeny
 
 ```{r, eval = F}
 
-model1_bmr<- MCMCglmm(devbysurv~bmrbysurv:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
-model2_bmr<- MCMCglmm(devbysurv~bmrbysurv+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+model1_bmr<- MCMCglmm(devbysurv~bmrbysurv:cyclenr_char+cyclenr_char,
+random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+model2_bmr<- MCMCglmm(devbysurv~bmrbysurv+cyclenr_char,
+random= ~uniqueid+Trait+Reference+species,data= Circannual_cycles_no_shorebirds, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
 
 model1_bmr$DIC
 model2_bmr$DIC
@@ -427,7 +480,7 @@ tr_full<-all_birds_tree_subset
 
 ```{r, eval = F}
 
-mulTree_data <- as.mulTree(data = Circannual_cycles_no_shorebirds, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
+mulTree_data <- as.mulTree(data = Circannual_cycles_no_shorebirds, tree = tr_full,taxa = "animal",  rand.term=~uniqueid+Trait+Reference+animal+species)
 formula_fintest<-devbysurv~bmrbysurv:cyclenr_char+cyclenr_char
 mulTree.parameters<-c(5000000, 5000, 100000)
 
@@ -436,7 +489,10 @@ mulTree.parameters<-c(5000000, 5000, 100000)
 
 ```{r, eval = F}
 
-bmr_n_shore<-mulTree(mulTree.data = mulTree_data, formula = formula_fintest, priors = pri5_1, pr=TRUE, parameters = mulTree.parameters, output = "bmr_n_shore", chains=8, parallel='SOCK')
+bmr_n_shore<-mulTree(mulTree.data = mulTree_data, 
+formula = formula_fintest, priors = pri5_1, 
+pr=TRUE, parameters = mulTree.parameters, 
+output = "bmr_n_shore", chains=8, parallel='SOCK')
 
 ```
 
@@ -510,7 +566,8 @@ extract_pMCMC<-function(model_name) {
   pMCMC_slope_cycle_1 <-c(pMCMC_slope_cycle_1, summary(model)$solutions[20])
 
   }
-  Res<-list(pMCMC_cycle=pMCMC_cycle,pMCMC_slope_cycle_0=pMCMC_slope_cycle_0,pMCMC_slope_cycle_1=pMCMC_slope_cycle_1)
+  Res<-list(pMCMC_cycle=pMCMC_cycle,pMCMC_slope_cycle_0=pMCMC_slope_cycle_0,
+  pMCMC_slope_cycle_1=pMCMC_slope_cycle_1)
   return(Res)
 }
 
@@ -544,7 +601,8 @@ extract_fixed<-function(model_name) {
   slope_cycle_0 <-c(slope_cycle_0, model$Sol[,3])
   slope_cycle_1 <-c(slope_cycle_1, model$Sol[,4])
   }
-  Res<-list(Intercept=Intercept, cycle_nr_1=cycle_nr_1,slope_cycle_0=slope_cycle_0,slope_cycle_1=slope_cycle_1)
+  Res<-list(Intercept=Intercept, cycle_nr_1=cycle_nr_1,
+  slope_cycle_0=slope_cycle_0,slope_cycle_1=slope_cycle_1)
   return(Res)
 }
 
@@ -589,7 +647,9 @@ extract_random<-function(model_name) {
   units_post <-c(units_post, model$VCV[,6])
    
   }
-  Res<-list(uniqueid_post=uniqueid_post, Trait_post=Trait_post,Reference_post=Reference_post,animal_post=animal_post, species_post=species_post,units_post=units_post)
+  Res<-list(uniqueid_post=uniqueid_post, Trait_post=Trait_post,
+  Reference_post=Reference_post,animal_post=animal_post, 
+  species_post=species_post,units_post=units_post)
   return(Res)
 }
 
@@ -619,9 +679,13 @@ quantile(random_effects$units_post,c(0.025,0.975))
 
 ```{r, eval = F}
 
-phyl_sig<-var(random_effects$animal_post)/(var(random_effects$uniqueid_post)+var(random_effects$Trait_post)+var(random_effects$Reference_post)+var(random_effects$animal_post)+var(random_effects$species_post)+var(random_effects$units_post))
+phyl_sig<-var(random_effects$animal_post)/(var(random_effects$uniqueid_post)+
+var(random_effects$Trait_post)+var(random_effects$Reference_post)+
+var(random_effects$animal_post)+var(random_effects$species_post)+
+var(random_effects$units_post))
 
-lambda<-var(random_effects$animal_post)/(var(random_effects$animal_post)+var(random_effects$species_post))
+lambda<-var(random_effects$animal_post)/(var(random_effects$animal_post)+
+var(random_effects$species_post))
 
 ```
 
