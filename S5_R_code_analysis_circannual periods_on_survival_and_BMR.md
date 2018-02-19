@@ -34,7 +34,7 @@ library(snow)
 library(mulTree)
 
 ```
-## PREPARE THE DATA 
+### PREPARE THE DATA 
 
 Download data from GitHub
 
