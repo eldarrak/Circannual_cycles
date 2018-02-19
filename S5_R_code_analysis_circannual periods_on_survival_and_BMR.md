@@ -1,9 +1,9 @@
 ###Appendix S7
 ## Testing for the correlation of free-running circannual period with survival using MCMCglmm and mulTree
 
-Supplementary online material  to Julia Karagicheva, Eldar Rakhimberdiev, Anatoly Saveliev & Theunis Piersma 2017 _Circannual rhythms functionally linking life histories and life cycles in birds._ - Journal of Functional Ecology 000: 000-000.
+Supplementary online material  to Julia Karagicheva, Eldar Rakhimberdiev, Anatoly Saveliev & Theunis Piersma 2017 _Circannual rhythms functionally link life histories and life cycles in birds._ - Journal of Functional Ecology 000: 000-000.
 
-Here we provide a code for the analysis presented in the paper, assessing the relationships between deviations of circannual periods from 365 days and species-specific annual survival rates. 
+Here we provide a code for the analysis presented in the paper, assessing the relationships between deviations of circannual periods from 365 days (circannual deviations) and species-specific annual survival rates. 
 
 In the analyses we used data from published studies on 14 passerine species and 2 shorebird species (Circannual_cycles_birds_data.csv)
 
