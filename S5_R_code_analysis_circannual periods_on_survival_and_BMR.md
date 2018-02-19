@@ -205,7 +205,7 @@ surv_w_shore<-mulTree(mulTree.data = mulTree_data,
 
 ```
 
-## Extract mulTree model output 
+### EXTRACT OUTPUTS 
 
 it is very likely that you will have to do it in a new R window. Therefore, again:
 
@@ -380,7 +380,7 @@ quantile(random_effects$units_post,c(0.025,0.975))
 
 ```
 
-### calculate phylogenetic signal
+### CALCULATE PHYLOGENETIC SIGNAL AND REPEATABILITIES
 
 ```{r, eval = F}
 
