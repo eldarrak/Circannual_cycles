@@ -1,5 +1,5 @@
 ###Appendix S7
-## Testing for the correlation of free-running circannual period with survival using MCMCglmm and mulTree
+## Testing for the correlation of free-running circannual period lengths with survival using MCMCglmm and mulTree
 
 Supplementary online material  to Julia Karagicheva, Eldar Rakhimberdiev, Anatoly Saveliev & Theunis Piersma 2017 _Circannual rhythms functionally link life histories and life cycles in birds._ - Journal of Functional Ecology 000: 000-000.
 
@@ -124,12 +124,31 @@ Circannual_cycles_birds_data$res_dev_bmr<-
 ```{r, eval = F}
 
 p.var<-var(Circannual_cycles_birds_data$res_dev_bmr,na.rm=TRUE)
+pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), 
+     G = list(G1 = list(V = matrix(p.var/2), nu = 1),
+     G2 = list(V = matrix(p.var/2), nu = 1), 
+     G3=list(V = matrix(p.var/2), nu = 1),
+     G4=list(V = matrix(p.var/2), nu = 1)))
 pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1), 
      G = list(G1 = list(V = matrix(p.var/2), nu = 1),
      G2 = list(V = matrix(p.var/2), nu = 1), 
      G3=list(V = matrix(p.var/2), nu = 1),
      G4=list(V = matrix(p.var/2), nu = 1),
      G5=list(V = matrix(p.var/2), nu = 1)))
+```
+
+### run MCMCglmm without phylogeny (see Table S8 in Appendix for the best selected model output)
+
+```{r, eval = F}
+model1 <- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data = Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+
+model2 <- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data = Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+
+model1$DIC #the best model
+#4000.682 
+model2$DIC
+#4008.936
+
 ```
 ### Get phylogenetic data
 
@@ -143,17 +162,17 @@ load("with_shorebirds_tree_subset.RData")
 tr_full<-with_shorebirds_tree_subset
 
 # select one phylogenetic tree for model selection in MCMCglmm
-mulTree_data <- as.mulTree(data = trait_data_with_shorebirds, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+species+animal)
+mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data, tree = tr_full,    taxa = "animal",  rand.term=~uniqueid+Trait+Reference+species+animal)
 
 ped<-mulTree_data$phy[[1]]
 ```
 
-### run MCMCglmm 
+### run MCMCglmm with phylogeny (see Table S8 in Appendix for the best selected model output)
 
 ```{r, eval = F}
-model1_pedigree <- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species+animal,data= trait_data_with_shorebirds, pedigree=ped,prior=pri5_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+model1_pedigree <- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species+animal,data= Circannual_cycles_birds_data, pedigree=ped,prior=pri5_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
 
-model2_pedigree <- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,random= ~uniqueid+Trait+Reference+species+animal,data= trait_data_with_shorebirds, pedigree=ped,prior=pri5_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
+model2_pedigree <- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,random= ~uniqueid+Trait+Reference+species+animal,data= Circannual_cycles_birds_data, pedigree=ped,prior=pri5_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
 
 model1_pedigree$DIC
 # 4000.948
