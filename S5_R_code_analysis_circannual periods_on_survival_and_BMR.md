@@ -3,7 +3,7 @@
 
 Supplementary online material  to Julia Karagicheva, Eldar Rakhimberdiev, Anatoly Saveliev & Theunis Piersma 2017 _Circannual rhythms functionally link life histories and life cycles in birds._ - Journal of Functional Ecology 000: 000-000.
 
-Here we provide a code for the presented in the paper analyses, assessing the relationships between deviations of circannual periods from 365 days (circannual deviations) and species-specific annual survival rates. 
+The R code for the presented in the paper analyses, assessing the relationships between deviations of circannual periods from 365 days (circannual deviations) and species-specific annual survival rates. 
 
 Install required packages
 
