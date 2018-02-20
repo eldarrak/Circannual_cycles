@@ -1,7 +1,7 @@
 ###Appendix S7
 ## Testing for the correlation of free-running circannual period lengths with survival using MCMCglmm and mulTree
 
-Supplementary online material  to Julia Karagicheva, Eldar Rakhimberdiev, Anatoly Saveliev & Theunis Piersma 2017 _Circannual rhythms functionally link life histories and life cycles in birds._ - Journal of Functional Ecology 000: 000-000.
+Supplementary online material  to Julia Karagicheva, Eldar Rakhimberdiev, Anatoly Saveliev & Theunis Piersma XXXX_Circannual rhythms functionally link life histories and life cycles in birds._ - Journal of Functional Ecology 000: 000-000.
 
 The R code for the presented in the paper analyses, assessing the relationships between deviations of circannual periods from 365 days (circannual deviations) and species-specific annual survival rates. 
 
@@ -137,7 +137,7 @@ pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1),
      G5=list(V = matrix(p.var/2), nu = 1)))
 ```
 
-### run MCMCglmm without phylogeny (see Table S8 in Appendix for the best selected model output)
+### run MCMCglmm without phylogeny (see Table S7 in Appendix for the best selected model output)
 
 ```{r, eval = F}
 model1 <- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species,data = Circannual_cycles_birds_data, prior=pri4_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
@@ -167,7 +167,7 @@ mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data, tree = tr_full, 
 ped<-mulTree_data$phy[[1]]
 ```
 
-### run MCMCglmm with phylogeny (see Table S8 in Appendix for the best selected model output)
+### run MCMCglmm with phylogeny (see Table S7 in Appendix for the best selected model output)
 
 ```{r, eval = F}
 model1_pedigree <- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,random= ~uniqueid+Trait+Reference+species+animal,data= Circannual_cycles_birds_data, pedigree=ped,prior=pri5_1, nitt=130000*10,thin=10*5,burnin=3000*10,pr=TRUE,verbose=F,nodes="ALL")
