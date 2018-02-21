@@ -1,7 +1,16 @@
-# Appendix S6
-## Testing for the correlation of free-running circannual period lengths with survival using MCMCglmm and mulTree
+---
+title: "Appendix S6. Testing for the correlation of free-running circannual period lengths with survival using MCMCglmm and mulTree"
+author: "Julia Karagicheva, Eldar Rakhimberdiev, Anatoly Saveliev & Theunis Piersma"
+header-includes:
+- \usepackage{fancyhdr}
+- \pagestyle{fancy}
+- \fancyhf{}
+- \fancyhead[LO,LE]{Functional Ecology}
+- \fancyfoot[LO,LE]{Annual chronotypes functionally link life histories and life cycles in birds, Karagicheva et al.}
+- \fancyfoot[RE,RO]{\thepage}
+---
 
-Supplementary online material  to Julia Karagicheva, Eldar Rakhimberdiev, Anatoly Saveliev & Theunis Piersma XXXX _Annual chronotypes functionally link life histories and life cycles in birds_. - Journal of Functional Ecology 000: 000-000.
+Supplementary online material S6 to Julia Karagicheva, Eldar Rakhimberdiev, Anatoly Saveliev & Theunis Piersma XXXX _Annual chronotypes functionally link life histories and life cycles in birds_. - Journal of Functional Ecology 000: 000-000.
 
 The R code for the presented in the paper analyses, assessing the relationships between deviations of circannual periods from 365 days (circannual deviations) and species-specific annual survival rates. 
 
@@ -94,7 +103,7 @@ Circannual_cycles_birds_data$res_dev_bmr<-
 ```
 
 ### RUN THE MODELS
-#### Set priors
+#### set priors
 ```{r, eval = F}
 p.var<-var(Circannual_cycles_birds_data$res_dev_bmr,na.rm=TRUE)
 pri4_1 <- list(R = list(V = matrix(p.var/2), nu = 1), 
@@ -128,7 +137,7 @@ model2$DIC
 #4008.936
 ```
 
-#### Get phylogenetic data
+#### get phylogenetic data
 Download phylogenetic trees (containing shorebirds), directly from http://birdtree.org/ or just download the 100 trees used in the presented analysis from https://git.io/v5ZxG:
 ```{r, eval = F}
 download.file("https://git.io/v5ZxG", "with_shorebirds_tree_subset.RData",mode="wb")
@@ -172,7 +181,7 @@ check autocorrelation
 autocorr(model1_pedigree$VCV)
 ```
 
-#### Run the best model with phylogeny using mulTree
+#### run the best model with phylogeny using mulTree
 set the directory, where you wish to store the outputs
 ##### set the model structure and parameters
 ```{r, eval = F}
@@ -200,7 +209,7 @@ library(mulTree)
 #... and set the work directory, where the model output is stored
 ```
 
-#### Check whether all the chains have converged
+#### check whether all the chains have converged
 this function gets convergence parameters from 'conv' files, automatically saved in the same directory as model outputs
 ```{r, eval = F}
 extract_conv<-function(model_name) {
@@ -223,7 +232,7 @@ extract_conv<-function(model_name) {
 conv_mother<-extract_conv('surv_w_shore')
 ```
 
-#### Collect mulTree outputs
+#### collect mulTree outputs
 you can first load one of the models' output, to see its structure
 
 we need p-values (pMCMC) for the fixed parameters: 
