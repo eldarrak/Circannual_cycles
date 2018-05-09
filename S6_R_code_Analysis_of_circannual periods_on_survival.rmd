@@ -1,5 +1,5 @@
 ---
-title: "Appendix S6. Testing for the correlation of free-running circannual period lengths with survival using MCMCglmm and mulTree"
+title: "Appendix S6. Testing for a correlation between free-running circannual period lengths and annual survival rates using MCMCglmm and mulTree"
 author: "Julia Karagicheva, Eldar Rakhimberdiev, Anatoly Saveliev & Theunis Piersma"
 header-includes:
 - \usepackage{fancyhdr}
@@ -46,7 +46,7 @@ load table with circannual cycles and deviations of circannual period from 365 d
 Circannual_cycles_birds_data<-read.csv('https://git.io/vAuSc',stringsAsFactors=F)
 ```
 
-create unique ID 
+create unique ID for each individual bird
 
 ```{r, eval = FALSE}
 Circannual_cycles_birds_data$uniqueid<-paste(Circannual_cycles_birds_data$species,
@@ -61,7 +61,7 @@ Circannual_cycles_birds_data$cyclenr_char<-
      as.character(Circannual_cycles_birds_data$cyclenr_char)
 ```
 
-load table "Survival_birds_data" with species-specific survival and calculate median per species
+load table "Survival_birds_data" with species-specific annual survival rates and calculate median per species
 
 ```{r, eval = FALSE}
 Survival_birds_data<-read.csv('https://git.io/vAu9v',stringsAsFactors=F)
@@ -99,7 +99,7 @@ for(i in 1:nrow(Circannual_cycles_birds_data)){
 }
 ```
 
-Calculate residuals of survival on BMR
+Calculate residuals of survival on BMR for log-log plot (Supplementary Figure 5) using natural logarithm
 
 ```{r, eval = FALSE}
 Circannual_cycles_birds_data$resbmr<-
@@ -114,7 +114,7 @@ Circannual_cycles_birds_data$res_dev_bmr<-
 ```
 
 # RUN THE MODELS
-## set priors
+## set noninformative priors
 
 ```{r, eval = FALSE}
 p.var<-var(Circannual_cycles_birds_data$res_dev_bmr,na.rm=TRUE)
@@ -132,7 +132,7 @@ pri5_1 <- list(R = list(V = matrix(p.var/2), nu = 1),
      G5=list(V = matrix(p.var/2), nu = 1)))
 ```
 
-## run MCMCglmm without phylogeny (see Table S7 in Appendix for the best selected model output)
+## run MCMCglmm without phylogeny (see Table S7 in Appendix S7 for the best selected model output)
 
 ```{r, eval = FALSE}
 model1 <- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,
@@ -148,9 +148,9 @@ model2 <- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,
                    pr=TRUE,verbose=F,nodes="ALL")
 
 model1$DIC #the best model
-#4000.682 
+#3980.395 
 model2$DIC
-#4008.936
+#3989.605
 ```
 
 ## get phylogenetic data
@@ -170,7 +170,7 @@ mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data,
 ped<-mulTree_data$phy[[1]]
 ```
 
-## run MCMCglmm with phylogeny (see Table S7 in Appendix for the best selected model output)
+## run MCMCglmm with phylogeny (see Table S7 in Appendix S7 for the best selected model output)
 
 ```{r, eval = FALSE}
 model1_pedigree <- MCMCglmm(res_dev_bmr~resbmr:cyclenr_char+cyclenr_char,
@@ -188,9 +188,9 @@ model2_pedigree <- MCMCglmm(res_dev_bmr~resbmr+cyclenr_char,
                             pr=TRUE,verbose=F,nodes="ALL")
 
 model1_pedigree$DIC
-# 4000.948
+# 3980.61
 model2_pedigree$DIC
-# 4009.138
+# 3989.99
 ```
 
 The best model
@@ -274,38 +274,41 @@ pMCMC_cycle: intercept between the transitory (baseline) and full cycle (cyclenr
 pMCMC_surv_cycle_0: slope for the transitory cycle
 pMCMC_surv_cycle_1: slope for the full cycle
 
-## function extracting pMCMC
+## create a function to extract pMCMC values
 
 ```{r, eval = FALSE}
 extract_pMCMC<-function(model_name) {
    Files<-list.files( pattern=paste0(model_name,'.*_chain'))
    cat(length(Files), 'files found\n')
+   pMCMC_intercept<-c()
    pMCMC_cycle<-c()
    pMCMC_slope_cycle_0<-c()
    pMCMC_slope_cycle_1<-c()
 
   for(i in 1:length(Files)){
      mod<-load(Files[i])
+	 pMCMC_intercept <-c(pMCMC_intercept, summary(model)$solutions[17])
      pMCMC_cycle <-c(pMCMC_cycle, summary(model)$solutions[18])
      pMCMC_slope_cycle_0 <-c(pMCMC_slope_cycle_0, summary(model)$solutions[19])
      pMCMC_slope_cycle_1 <-c(pMCMC_slope_cycle_1, summary(model)$solutions[20])
   }
-  Res<-list(pMCMC_cycle=pMCMC_cycle,pMCMC_slope_cycle_0=pMCMC_slope_cycle_0,
+  Res<-list(pMCMC_intercept=pMCMC_intercept,pMCMC_cycle=pMCMC_cycle,pMCMC_slope_cycle_0=pMCMC_slope_cycle_0,
        pMCMC_slope_cycle_1=pMCMC_slope_cycle_1)
   return(Res)
 }
 ```
 
-## extract pMCMC for the model
+## extract pMCMC values for the model
 
 ```{r, eval = FALSE}
 pMCMC<-extract_pMCMC('surv_w_shore')
+summary(pMCMC$pMCMC_intercept)
 summary(pMCMC$pMCMC_cycle)
 summary(pMCMC$pMCMC_slope_cycle_0)
 summary(pMCMC$pMCMC_slope_cycle_1)
 ```
 
-## function extracting fixed effects
+## create a function to extract fixed effects
 ```{r, eval = FALSE}
 extract_fixed<-function(model_name) {
   Files<-list.files( pattern=paste0(model_name,'.*_chain'))
@@ -343,7 +346,7 @@ quantile(fixed_effects$slope_cycle_0,c(0.025,0.975))
 quantile(fixed_effects$slope_cycle_1,c(0.025,0.975))
 ```
 
-## function extracting random effects
+## create a function to extract random effects
 
 ```{r, eval = FALSE}
 extract_random<-function(model_name) {
@@ -398,20 +401,20 @@ phyl_sig<-var(random_effects$animal_post)/
           (var(random_effects$uniqueid_post) + var(random_effects$Trait_post) + 
           var(random_effects$Reference_post) + var(random_effects$animal_post) + 
           var(random_effects$species_post)+var(random_effects$units_post))
-# phyl_sig = 0.423506
+# phyl_sig = 0.4325209
 
 lambda<-var(random_effects$animal_post)/
         (var(random_effects$animal_post)+var(random_effects$species_post))
-#lambda = 0.812362
+#lambda = 0.8123768
 
 #Intra-specific repeatability
 repeatab<-var(random_effects$species_post)/
           (var(random_effects$uniqueid_post)+var(random_effects$Trait_post) + 
           var(random_effects$Reference_post)+ var(random_effects$animal_post) +
           var(random_effects$species_post)+var(random_effects$units_post))
-# repeatab = 0.09782072
+# repeatab = 0.09989324
 
 repeatab_adjusted<-var(random_effects$species_post)/
                     (var(random_effects$species_post)+var(random_effects$units_post))
-# repeatab_adjusted = 0.9517922
+# repeatab_adjusted = 0.9541262
 ```
