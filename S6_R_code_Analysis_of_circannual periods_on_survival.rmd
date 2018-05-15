@@ -17,21 +17,17 @@ The R code for the presented in the paper analyses, assessing the relationships 
 Install required packages
 
 ```{r, eval = FALSE}
-install.packages('snow')
+
+#install.packages(c('MCMCglmm','snow','geiger','phytools','phangorn'))
 if(!require(devtools)) install.packages("devtools")
 library(devtools)
-install_github("TGuillerme/mulTree", ref = "release")
-```
-
-you might need to install some packages manually
-
-```{r, eval = FALSE}
-install.packages(c("MCMCglmm", "coda", "hdrcde", "snow", "ape", "corpcor", "curl"))
+devtools::install_github('TGuillerme/mulTree')
 ```
 
 Load required packages
 
 ```{r, eval = FALSE}
+library(MCMCglmm)
 library(snow)
 library(mulTree)
 ```
@@ -154,15 +150,55 @@ model2$DIC
 ```
 
 ## get phylogenetic data
+Go to https://birdtree.org/subsets/, paste the listed below species' names in the requested window, select 'Hackett All Species' as a source of trees, set the number of trees to create to 10 000, and download the trees
 
+Calidris_canutus
+Calidris_tenuirostris   
+Parus_cristatus       
+Sylvia_borin 
+Sylvia_atricapilla
+Phylloscopus_trochilus
+Phylloscopus_collybita
+Sturnus_vulgaris        
+Saxicola_torquatus   
+Ficedula_hypoleuca   
+Ficedula_albicollis     
+Loxia_curvirostra
+Fringilla_coelebs    
+Fringilla_montifringilla
+Junco_hyemalis   
+Passer_montanus
+
+Note that model outputs may vary depending on the subset of trees used in the analyses
 
 ```{r, eval = FALSE}
-download.file("https://git.io/v5ZxG", "with_shorebirds_tree_subset.RData",mode="wb")
-# load the phylogenetic trees subset
-load("with_shorebirds_tree_subset.RData")
-tr_full<-with_shorebirds_tree_subset
+library(geiger)
+library(phytools)
+library(phangorn)
+```
 
-# select one phylogenetic tree for model selection in MCMCglmm
+Open the downloaded file and create a subset of randomly sampled 100 phylogenetic trees
+
+```{r, eval = FALSE}
+trees = read.nexus("Phylogenetic_trees_filename.tre")
+tr_full<-sample(10000,100,replace = FALSE, prob = NULL)
+
+is.ultrametric(trees[tr_full])
+```
+To procede, one has to make the trees ultrametric
+
+```{r, eval = FALSE}
+for (i in 1:100){
+tr-full[[i]] <- nnls.tree(cophenetic(trees[[i]]),trees[[i]],rooted=TRUE)
+}
+
+is.ultrametric(tr-full)
+```
+
+
+Now you can select one phylogenetic tree for model selection in MCMCglmm
+
+```{r, eval = FALSE}
 mulTree_data <- as.mulTree(data = Circannual_cycles_birds_data,
                            tree = tr_full, taxa = "animal",
                            rand.term=~uniqueid+Trait+Reference+species+animal)
